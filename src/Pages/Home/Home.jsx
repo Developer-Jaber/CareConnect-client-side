@@ -3,14 +3,14 @@ import PopularCamps from "../../Components/PopularCamps/PopularCamps";
 
 const Home = () => {
     return (
-        <body>
+        <>
             <section>
                 <Banner></Banner>
             </section>
             <section>
                 <PopularCamps></PopularCamps>
             </section>
-        </body>
+        </>
     );
 };
 

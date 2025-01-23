@@ -46,7 +46,8 @@ const Navber = () => {
         <ul className='px-1 text-lg menu menu-horizontal'>{link}</ul>
       </div>
       <div className='navbar-end'>
-        <div className='dropdown dropdown-end'>
+        <Link to='/join-us' className='btn btn-primary'>Join Us</Link>
+        {/* <div className='dropdown dropdown-end'>
           <div
             tabIndex={0}
             role='button'
@@ -76,7 +77,7 @@ const Navber = () => {
               <a>Logout</a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   )

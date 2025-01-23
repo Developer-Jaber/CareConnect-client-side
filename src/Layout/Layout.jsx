@@ -3,7 +3,7 @@ import Navbar from "../Shared/Navber";
 
 const Layout = () => {
     return (
-        <body>
+        <>
             <nav>
                 <Navbar></Navbar>
             </nav>
@@ -11,7 +11,7 @@ const Layout = () => {
                 <Outlet></Outlet>
             </main>
             <footer></footer>
-        </body>
+        </>
     );
 };
 
