@@ -40,7 +40,7 @@ const Navber = () => {
           </ul>
         </div>
         <img className='rounded-lg w-14' src={Logo} alt='' />
-        <a className='font-bold text-2xl btn btn-ghost'>CareConnect Camps</a>
+        <a className='font-bold text-[#1A8A83] text-2xl btn btn-ghost'>CareConnect Camps</a>
       </div>
       <div className='lg:flex hidden navbar-center'>
         <ul className='px-1 text-lg menu menu-horizontal'>{link}</ul>
