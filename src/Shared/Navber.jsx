@@ -5,10 +5,10 @@ const Navber = () => {
   const link = (
     <>
       <li>
-        <Link>Home</Link>
+        <Link to='/'>Home</Link>
       </li>
       <li>
-        <Link>Available Camps</Link>
+        <Link to='/available-camps-page'>Available Camps</Link>
       </li>
     </>
   )
