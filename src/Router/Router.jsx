@@ -3,6 +3,7 @@ import Layout from '../Layout/Layout'
 import Home from '../Pages/Home/Home'
 import AvailableCampsPage from '../Pages/AvailableCampsPage/AvailableCampsPage '
 import JoinUs from '../Pages/JoinUs/JoinUs'
+import Register from '../Pages/Register/Register'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         {
           path: '/join-us',
           element: <JoinUs></JoinUs>
+        },
+        {
+          path: '/register',
+          element: <Register></Register>
         }
     ]
   }

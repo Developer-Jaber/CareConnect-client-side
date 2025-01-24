@@ -1,15 +1,10 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import {
-  GoogleOutlined,
-  GithubOutlined,
-  FacebookOutlined
-} from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
 
-const JoinUs = () => {
-  const { loginWithGoogle, loginUser, user, setUser } = useContext(AuthContext)
+const Register = () => {
+  const { createUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const {
     register,
@@ -17,35 +12,20 @@ const JoinUs = () => {
     formState: { errors }
   } = useForm()
 
-  const handleLogin = (data) => {
-    // Logic for email/password login
-    loginUser(data.email,data.password)
-    .then(result=>{
-      setUser(result);
-      navigate('/');
-    })
-    .catch(error=>{
-      console.log(error);
-    })
-    console.log(data);
-  };
-  
-  const handleSocialLogin = () => {
-    loginWithGoogle()
-    .then(result=>{
-      setUser(result);
-      navigate('/');
-    })
-    .catch(error=>{
-      console.log(error);
-    })
+  const handleRegister = data => {
+    createUser(data.email,data.password)
+      .then(result => {
+        console.log(result.user)
+        navigate('/') // Redirect to home after registration
+      })
+      .catch(error => console.error(error))
   }
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
       <div className='bg-white shadow-xl p-6 rounded-lg w-full max-w-md card'>
-        <h1 className='mb-4 font-bold text-2xl text-center'>Login</h1>
-        <form onSubmit={handleSubmit(handleLogin)} className='space-y-4'>
+        <h1 className='mb-4 font-bold text-2xl text-center'>Register</h1>
+        <form onSubmit={handleSubmit(handleRegister)} className='space-y-4'>
           <div>
             <label className='block font-medium text-sm'>Email</label>
             <input
@@ -73,32 +53,16 @@ const JoinUs = () => {
             )}
           </div>
           <button type='submit' className='w-full btn btn-primary'>
-            Login
+            Register
           </button>
         </form>
-
-        <div className='divider'>OR</div>
-        <div className='space-y-2'>
-          <button
-            onClick={handleSocialLogin}
-            className='flex items-center gap-2 w-full btn btn-outline'
-          >
-            <GoogleOutlined /> Login with Google
-          </button>
-          <button className='flex items-center gap-2 w-full btn btn-outline'>
-            <GithubOutlined /> Login with GitHub
-          </button>
-          <button className='flex items-center gap-2 w-full btn btn-outline'>
-            <FacebookOutlined /> Login with Facebook
-          </button>
-        </div>
         <p className='mt-4 text-center text-sm'>
-          Don't have an account?{' '}
+          Already have an account?{' '}
           <span
-            onClick={() => navigate('/register')}
+            onClick={() => navigate('/join-us')}
             className='text-blue-500 cursor-pointer'
           >
-            Register here
+            Login here
           </span>
         </p>
       </div>
@@ -106,4 +70,4 @@ const JoinUs = () => {
   )
 }
 
-export default JoinUs
+export default Register

@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom'
 import Logo from '../img/ConnectCareLogo.webp'
+import { useContext } from 'react'
+import { AuthContext } from '../Provider/AuthProvider'
+import { Button } from 'antd'
 
 const Navber = () => {
+  const { user, userLogOut } = useContext(AuthContext)
   const link = (
     <>
       <li>
@@ -12,6 +16,16 @@ const Navber = () => {
       </li>
     </>
   )
+
+  const handleLogOut = () => {
+    userLogOut()
+      .then(() => {
+        alert('LogOut User successfull')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
   return (
     <div className='bg-base-100 mx-auto w-10/12 navbar'>
       <div className='navbar-start'>
@@ -40,44 +54,58 @@ const Navber = () => {
           </ul>
         </div>
         <img className='rounded-lg w-14' src={Logo} alt='' />
-        <a className='font-bold text-[#1A8A83] text-2xl btn btn-ghost'>CareConnect Camps</a>
+        <a className='font-bold text-[#1A8A83] text-2xl btn btn-ghost'>
+          CareConnect Camps
+        </a>
       </div>
       <div className='lg:flex hidden navbar-center'>
         <ul className='px-1 text-lg menu menu-horizontal'>{link}</ul>
       </div>
       <div className='navbar-end'>
-        <Link to='/join-us' className='btn btn-primary'>Join Us</Link>
-        {/* <div className='dropdown dropdown-end'>
-          <div
-            tabIndex={0}
-            role='button'
-            className='avatar btn btn-circle btn-ghost'
-          >
-            <div className='rounded-full w-10'>
-              <img
-                alt='Tailwind CSS Navbar component'
-                src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-              />
+        {user && user?.email ? (
+          <div className='dropdown dropdown-end'>
+            <div
+              tabIndex={0}
+              role='button'
+              className='avatar btn btn-circle btn-ghost'
+            >
+              <div className='rounded-full w-10'>
+                {user && user?.photoURL ? (
+                  <img src={user.photoURL} alt="" />
+                ) : (
+                  <img
+                    alt='Tailwind CSS Navbar component'
+                    src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
+                  />
+                )}
+              </div>
             </div>
+            <ul
+              tabIndex={0}
+              className='z-[1] bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm'
+            >
+              <li className='bg-slate-300 p-3 overflow-hidden'>
+                {user?.email}
+              </li>
+              <li>
+                <a className='justify-between'>
+                  Profile
+                  <span className='badge'>New</span>
+                </a>
+              </li>
+              <li>
+                <a>Dashboard</a>
+              </li>
+              <li>
+                <Button onClick={handleLogOut}>Logout</Button>
+              </li>
+            </ul>
           </div>
-          <ul
-            tabIndex={0}
-            className='z-[1] bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm'
-          >
-            <li>
-              <a className='justify-between'>
-                Profile
-                <span className='badge'>New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div> */}
+        ) : (
+          <Link to='/join-us' className='btn btn-primary'>
+            Join Us
+          </Link>
+        )}
       </div>
     </div>
   )
