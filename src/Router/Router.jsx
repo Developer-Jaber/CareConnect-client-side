@@ -4,6 +4,7 @@ import Home from '../Pages/Home/Home'
 import AvailableCampsPage from '../Pages/AvailableCampsPage/AvailableCampsPage '
 import JoinUs from '../Pages/JoinUs/JoinUs'
 import Register from '../Pages/Register/Register'
+import CampDetails from '../Pages/CampDetails/CampDetails'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
         {
           path: '/register',
           element: <Register></Register>
+        },
+        {
+          path: '/camp-details/:id',
+          element: <CampDetails></CampDetails>,
+          loader: ({params})=>fetch(`http://localhost:5000/madical_camp/${params.id}`),
         }
     ]
   }

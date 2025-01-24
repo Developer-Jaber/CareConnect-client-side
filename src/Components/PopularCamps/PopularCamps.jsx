@@ -65,7 +65,7 @@ const PopularCamps = () => {
                   </div>
                 }
               />
-              <Link to={`/camp-details/${camp.id}`}>
+              <Link to={`/camp-details/${camp._id}`}>
                 <Button
                   type="primary"
                   className="bg-blue-600 hover:bg-blue-700 mt-4 border-none w-full"

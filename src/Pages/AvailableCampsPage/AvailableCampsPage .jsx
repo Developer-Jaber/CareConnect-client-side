@@ -43,6 +43,7 @@ const AvailableCampsPage = () => {
     setFilteredCamps(sorted);
   }, [sortOption]);
 
+  
   return (
     <div className="mx-auto my-10 w-11/12 available-camps-page">
       {/* Search Bar */}
@@ -98,7 +99,7 @@ const AvailableCampsPage = () => {
                   </div>
                 }
               />
-              <Link to={`/camp-details/${camp.id}`}>
+              <Link to={`/camp-details/${camp._id}`}>
                 <Button type="primary" className="mt-4 w-full">
                   Details
                 </Button>
