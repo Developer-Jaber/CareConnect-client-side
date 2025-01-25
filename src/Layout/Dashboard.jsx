@@ -1,61 +1,136 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { FaHome, FaUser } from 'react-icons/fa'
+import { IoAnalytics } from 'react-icons/io5'
+import { MdAddHome, MdAppRegistration, MdManageHistory, MdPayment } from 'react-icons/md'
+import { Outlet, NavLink } from 'react-router-dom'
 
 const Dashboard = () => {
+  const isOrganizer = false
   return (
-    <div className="flex min-h-screen">
+    <div className='flex min-h-screen'>
       {/* Sidebar */}
-      <aside className="bg-gray-800 p-5 w-64 text-white">
-        <h2 className="mb-5 font-bold text-2xl">Organizer Dashboard</h2>
+      <aside className='bg-green-900 p-5 w-72 text-white'>
+        <h2 className='mb-5 font-bold text-2xl'>Organizer Dashboard</h2>
+        {isOrganizer ? (
+          <>
+            <nav>
+              <NavLink
+                to='/dashboard/organizer-profile'
+                className={({ isActive }) =>
+                  `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                    isActive ? 'bg-gray-500' : ''
+                  }`
+                }
+              >
+                <FaUser></FaUser>
+                <span>Organizer Profile</span>
+              </NavLink>
+              <NavLink
+                to='/dashboard/add-camp'
+                className={({ isActive }) =>
+                  `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                    isActive ? 'bg-gray-500' : ''
+                  }`
+                }
+              >
+                <MdAddHome></MdAddHome>
+                <span>Add A Camp</span>
+              </NavLink>
+              <NavLink
+                to='/dashboard/manage-camps'
+                className={({ isActive }) =>
+                  `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                    isActive ? 'bg-gray-500' : ''
+                  }`
+                }
+              >
+                <MdManageHistory></MdManageHistory>
+                <span>Manage Camps</span>
+              </NavLink>
+              <NavLink
+                to='/dashboard/manage-registered-camps'
+                className={({ isActive }) =>
+                  `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                    isActive ? 'bg-gray-500' : ''
+                  }`
+                }
+              >
+                <MdManageHistory></MdManageHistory>
+                <span> Manage Registered Camps</span>
+              </NavLink>
+            </nav>
+          </>
+        ) : (
+          <>
+            <nav>
+              <NavLink
+                to='/dashboard/organizer-profile'
+                className={({ isActive }) =>
+                  `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                    isActive ? 'bg-gray-500' : ''
+                  }`
+                }
+              >
+                <IoAnalytics></IoAnalytics>
+                <span>Analytics</span>
+              </NavLink>
+              <NavLink
+                to='/dashboard/add-camp'
+                className={({ isActive }) =>
+                  `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                    isActive ? 'bg-gray-500' : ''
+                  }`
+                }
+              >
+                <FaUser></FaUser>
+                <span>Participant Profile</span>
+              </NavLink>
+              <NavLink
+                to='/dashboard/manage-camps'
+                className={({ isActive }) =>
+                  `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                    isActive ? 'bg-gray-500' : ''
+                  }`
+                }
+              >
+                <MdAppRegistration></MdAppRegistration>
+                <span>Registered Camps</span>
+              </NavLink>
+              <NavLink
+                to='/dashboard/manage-registered-camps'
+                className={({ isActive }) =>
+                  `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                    isActive ? 'bg-gray-500' : ''
+                  }`
+                }
+              >
+                <MdPayment></MdPayment>
+                <span>Payment History</span>
+              </NavLink>
+            </nav>
+          </>
+        )}
+        <div className='divider divider-info'></div>
         <nav>
           <NavLink
-            to="/dashboard/organizer-profile"
+            to='/'
             className={({ isActive }) =>
-              `block py-2 px-4 rounded hover:bg-gray-700 ${
-                isActive ? "bg-gray-700" : ""
+              `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                isActive ? 'bg-gray-500' : ''
               }`
             }
           >
-            Organizer Profile
-          </NavLink>
-          <NavLink
-            to="/dashboard/add-camp"
-            className={({ isActive }) =>
-              `block py-2 px-4 rounded hover:bg-gray-700 ${
-                isActive ? "bg-gray-700" : ""
-              }`
-            }
-          >
-            Add A Camp
-          </NavLink>
-          <NavLink
-            to="/dashboard/manage-camps"
-            className={({ isActive }) =>
-              `block py-2 px-4 rounded hover:bg-gray-700 ${
-                isActive ? "bg-gray-700" : ""
-              }`
-            }
-          >
-            Manage Camps
-          </NavLink>
-          <NavLink
-            to="/dashboard/manage-registered-camps"
-            className={({ isActive }) =>
-              `block py-2 px-4 rounded hover:bg-gray-700 ${
-                isActive ? "bg-gray-700" : ""
-              }`
-            }
-          >
-            Manage Registered Camps
+            <FaHome></FaHome>
+            <span>Home</span>
           </NavLink>
         </nav>
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 p-5">
+      <main className='flex-1 p-5'>
         <Outlet />
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
