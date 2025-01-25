@@ -7,6 +7,7 @@ import Register from '../Pages/Register/Register'
 import CampDetails from '../Pages/CampDetails/CampDetails'
 import Dashboard from '../Layout/Dashboard'
 import OrganizerProfile from '../Pages/Dashboard/OrganizerProfile/OrganizerProfile'
+import PrivetRouts from './PrivetRouts'
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/camp-details/:id',
-          element: <CampDetails></CampDetails>,
+          element: <PrivetRouts><CampDetails></CampDetails></PrivetRouts>,
           loader: ({params})=>fetch(`http://localhost:5000/madical_camp/${params.id}`),
         }
     ]
