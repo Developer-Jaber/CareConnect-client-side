@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Logo from '../img/ConnectCareLogo.webp'
 import { useContext } from 'react'
 import { AuthContext } from '../Provider/AuthProvider'
-import { Button } from 'antd'
+import { Button, message } from 'antd'
 
 const Navber = () => {
   const { user, userLogOut } = useContext(AuthContext)
@@ -20,10 +20,10 @@ const Navber = () => {
   const handleLogOut = () => {
     userLogOut()
       .then(() => {
-        alert('LogOut User successfull')
+        message.success('You have successfully Logged out!')
       })
-      .catch(error => {
-        console.log(error)
+      .catch(() => {
+        message.error('Something went wrong!')
       })
   }
   return (
@@ -71,7 +71,7 @@ const Navber = () => {
             >
               <div className='rounded-full w-10'>
                 {user && user?.photoURL ? (
-                  <img src={user.photoURL} alt="" />
+                  <img src={user.photoURL} alt='' />
                 ) : (
                   <img
                     alt='Tailwind CSS Navbar component'

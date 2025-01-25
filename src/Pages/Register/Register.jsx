@@ -1,12 +1,17 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
 import { message } from 'antd'
+import useAxiosPublic from '../../Hook/useAxiosPublic'
 
 const Register = () => {
   const { createUser, updateUserprofile } = useContext(AuthContext)
   const navigate = useNavigate()
+  const location = useLocation()
+  const axiosPublic = useAxiosPublic()
+
+  const from = location.state?.from?.pathname || '/'
   const {
     register,
     handleSubmit,
@@ -16,19 +21,25 @@ const Register = () => {
 
   const handleRegister = data => {
     createUser(data.email, data.password)
-      .then(() => {
+      .then(result => {
         updateUserprofile(data.displayName, data.photoURL)
           .then(() => {
-            message.success('You have successfully Resistered!');
-            reset();
+            message.success('You have successfully Resistered!')
           })
           .catch(() => {
             message.error('Oops somthing went wrong!')
           })
-        navigate('/') // Redirect to home after registration
+        const userInfo = {
+          email: result.user?.email,
+          name: result.user?.displayName
+        }
+        axiosPublic.post('/users', userInfo).then(() => {
+          navigate(from, { replace: true })
+          reset()
+        })
       })
-      .catch(()=>{
-        message.error('Oops somthing went wrong!');
+      .catch(() => {
+        message.error('Oops somthing went wrong!')
       })
   }
 

@@ -7,41 +7,54 @@ import {
 } from '@ant-design/icons'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
+import useAxiosPublic from '../../Hook/useAxiosPublic'
+import { message } from 'antd'
 
 const JoinUs = () => {
   const { loginWithGoogle, loginUser, user, setUser } = useContext(AuthContext)
-  const navigate = useNavigate();
-  const location  = useLocation();
+  const navigate = useNavigate()
+  const location = useLocation()
+  const axiosPublic = useAxiosPublic();
 
-  const from = location.state?.from?.pathname || "/"; 
+  const from = location.state?.from?.pathname || '/'
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm()
 
-  const handleLogin = (data) => {
+  const handleLogin = data => {
     // Logic for email/password login
-    loginUser(data.email,data.password)
-    .then(result=>{
-      setUser(result);
-      navigate(from, {replace: true});
-    })
-    .catch(error=>{
-      console.log(error);
-    })
-    console.log(data);
-  };
-  
+    loginUser(data.email, data.password)
+      .then(result => {
+        setUser(result)
+        navigate(from, { replace: true })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    console.log(data)
+  }
+
   const handleSocialLogin = () => {
     loginWithGoogle()
-    .then(result=>{
-      setUser(result);
-      navigate(from, {replace: true});
-    })
-    .catch(error=>{
-      console.log(error);
-    })
+      .then((result) => {
+        const userInfo = {
+          email: result.user?.email,
+          name: result.user?.displayName
+        }
+        axiosPublic.post('/users', userInfo)
+        .then(()=>{
+          message.success("successfully Login user!");
+          navigate(from, { replace: true })
+        })
+        // .catch(()=>{
+        //   message.error("Somthing went wrong!");
+        // })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   return (
