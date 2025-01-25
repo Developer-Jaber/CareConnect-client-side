@@ -94,7 +94,7 @@ const Navber = () => {
                 </a>
               </li>
               <li>
-                <a>Dashboard</a>
+                <Link to='/dashboard'>Dashboard</Link>
               </li>
               <li>
                 <Button onClick={handleLogOut}>Logout</Button>

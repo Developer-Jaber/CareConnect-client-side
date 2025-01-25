@@ -5,6 +5,8 @@ import AvailableCampsPage from '../Pages/AvailableCampsPage/AvailableCampsPage '
 import JoinUs from '../Pages/JoinUs/JoinUs'
 import Register from '../Pages/Register/Register'
 import CampDetails from '../Pages/CampDetails/CampDetails'
+import Dashboard from '../Layout/Dashboard'
+import OrganizerProfile from '../Pages/Dashboard/OrganizerProfile/OrganizerProfile'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,16 @@ const router = createBrowserRouter([
           path: '/camp-details/:id',
           element: <CampDetails></CampDetails>,
           loader: ({params})=>fetch(`http://localhost:5000/madical_camp/${params.id}`),
+        }
+    ]
+  },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+        {
+          path: '/dashboard/organizer-profile',
+          element: <OrganizerProfile></OrganizerProfile>
         }
     ]
   }
