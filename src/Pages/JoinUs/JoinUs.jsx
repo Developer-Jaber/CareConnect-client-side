@@ -5,12 +5,15 @@ import {
   GithubOutlined,
   FacebookOutlined
 } from '@ant-design/icons'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
 
 const JoinUs = () => {
   const { loginWithGoogle, loginUser, user, setUser } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location  = useLocation();
+
+  const from = location.state?.from?.pathname || "/"; 
   const {
     register,
     handleSubmit,
@@ -22,7 +25,7 @@ const JoinUs = () => {
     loginUser(data.email,data.password)
     .then(result=>{
       setUser(result);
-      navigate('/');
+      navigate(from, {replace: true});
     })
     .catch(error=>{
       console.log(error);
@@ -34,7 +37,7 @@ const JoinUs = () => {
     loginWithGoogle()
     .then(result=>{
       setUser(result);
-      navigate('/');
+      navigate(from, {replace: true});
     })
     .catch(error=>{
       console.log(error);
