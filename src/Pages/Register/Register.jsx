@@ -2,23 +2,34 @@ import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
+import { message } from 'antd'
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext)
+  const { createUser, updateUserprofile } = useContext(AuthContext)
   const navigate = useNavigate()
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm()
 
   const handleRegister = data => {
-    createUser(data.email,data.password)
-      .then(result => {
-        console.log(result.user)
+    createUser(data.email, data.password)
+      .then(() => {
+        updateUserprofile(data.displayName, data.photoURL)
+          .then(() => {
+            message.success('You have successfully Resistered!');
+            reset();
+          })
+          .catch(() => {
+            message.error('Oops somthing went wrong!')
+          })
         navigate('/') // Redirect to home after registration
       })
-      .catch(error => console.error(error))
+      .catch(()=>{
+        message.error('Oops somthing went wrong!');
+      })
   }
 
   return (
@@ -26,6 +37,35 @@ const Register = () => {
       <div className='bg-white shadow-xl p-6 rounded-lg w-full max-w-md card'>
         <h1 className='mb-4 font-bold text-2xl text-center'>Register</h1>
         <form onSubmit={handleSubmit(handleRegister)} className='space-y-4'>
+          {/* Input fild for PhotoUrl */}
+          <div>
+            <label className='block font-medium text-sm'>Name</label>
+            <input
+              type='displayName'
+              {...register('displayName', { required: 'Name is required' })}
+              className='input-bordered w-full input'
+            />
+            {errors.displayName && (
+              <p className='mt-1 text-red-500 text-sm'>
+                {errors.displayName.message}
+              </p>
+            )}
+          </div>
+          {/* Input fild for PhotoUrl */}
+          <div>
+            <label className='block font-medium text-sm'>photoURL</label>
+            <input
+              type='photoURL'
+              {...register('photoURL', { required: 'PhotoURL is required' })}
+              className='input-bordered w-full input'
+            />
+            {errors.photoURL && (
+              <p className='mt-1 text-red-500 text-sm'>
+                {errors.photoURL.message}
+              </p>
+            )}
+          </div>
+          {/* Input fild for email */}
           <div>
             <label className='block font-medium text-sm'>Email</label>
             <input

@@ -32,7 +32,7 @@ const PopularCamps = () => {
         <div className="gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {popularCamps.map((camp) => (
             <Card
-              key={camp.id}
+              key={camp._id}
               hoverable
               className="shadow-lg camp-card rounded-lg"
               cover={
