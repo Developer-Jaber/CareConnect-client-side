@@ -8,6 +8,7 @@ import CampDetails from '../Pages/CampDetails/CampDetails'
 import Dashboard from '../Layout/Dashboard'
 import OrganizerProfile from '../Pages/Dashboard/OrganizerProfile/OrganizerProfile'
 import PrivetRouts from './PrivetRouts'
+import AddCamp from '../Pages/Dashboard/OrganizerProfile/AddCamp'
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/',
         element: <OrganizerProfile></OrganizerProfile>
+      },
+      {
+        path: '/dashboard/add-camp',
+        element: <AddCamp></AddCamp>
       }
     ]
   }
