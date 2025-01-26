@@ -1,20 +1,25 @@
 import { FaHome, FaUser } from 'react-icons/fa'
 import { IoAnalytics } from 'react-icons/io5'
-import { MdAddHome, MdAppRegistration, MdManageHistory, MdPayment } from 'react-icons/md'
+import {
+  MdAddHome,
+  MdAppRegistration,
+  MdManageHistory,
+  MdPayment
+} from 'react-icons/md'
 import { Outlet, NavLink } from 'react-router-dom'
 
 const Dashboard = () => {
-  const isOrganizer = false
+  const isOrganizer = true
   return (
     <div className='flex min-h-screen'>
       {/* Sidebar */}
       <aside className='bg-green-900 p-5 w-72 text-white'>
-        <h2 className='mb-5 font-bold text-2xl'>Organizer Dashboard</h2>
         {isOrganizer ? (
           <>
+            <h2 className='mb-5 font-bold text-2xl'>Organizer Dashboard</h2>
             <nav>
               <NavLink
-                to='/dashboard/organizer-profile'
+                to='/dashboard/'
                 className={({ isActive }) =>
                   `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
                     isActive ? 'bg-gray-500' : ''
@@ -61,9 +66,10 @@ const Dashboard = () => {
           </>
         ) : (
           <>
+            <h2 className='mb-5 font-bold text-2xl'>Participant Dashboard</h2>
             <nav>
               <NavLink
-                to='/dashboard/organizer-profile'
+                to='/dashboard/participant-profile'
                 className={({ isActive }) =>
                   `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
                     isActive ? 'bg-gray-500' : ''
