@@ -15,7 +15,7 @@ const AvailableCampsPage = () => {
   const [filteredCamps, setFilteredCamps] = useState(camps);
 
   useEffect(()=>{
-    fetch('http://localhost:5000/madical_camp')
+    fetch('https://b10a12-server-side-developer-jaber.vercel.app/madical_camp')
     .then(res=>res.json())
     .then(data=>setCamps(data))
   },[])

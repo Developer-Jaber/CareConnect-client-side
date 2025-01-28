@@ -9,7 +9,7 @@ const ManageCamps = () => {
 
   // Fetch camps on component load
   useEffect(() => {
-    fetch('http://localhost:5000/madical_camp')
+    fetch('https://b10a12-server-side-developer-jaber.vercel.app/madical_camp')
       .then((response) => response.json())
       .then((data) => setCamps(data))
   }, [])
@@ -17,7 +17,7 @@ const ManageCamps = () => {
   // Handle Delete Function
   const handleDelete = (campId) => {
     if (window.confirm('Are you sure you want to delete this camp?')) {
-      fetch(`http://localhost:5000/delete-camp/${campId}`, {
+      fetch(`https://b10a12-server-side-developer-jaber.vercel.app/delete-camp/${campId}`, {
         method: 'DELETE'
       }).then(() => {
         setCamps((prevCamps) => prevCamps.filter((camp) => camp._id !== campId))

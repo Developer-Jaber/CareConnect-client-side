@@ -17,7 +17,7 @@ const CampDetails = () => {
   const hideModal = () => setIsModalOpen(false);
 
   const handleJoinCamp = () => {
-    fetch(`http://localhost:5000/madical_camp/${camp._id}`, {
+    fetch(`https://b10a12-server-side-developer-jaber.vercel.app/madical_camp/${camp._id}`, {
       method: "PATCH",
     });
   };
@@ -35,7 +35,7 @@ const CampDetails = () => {
     };
 
     // Save participant data to the backend
-    fetch("http://localhost:5000/participants", {
+    fetch("https://b10a12-server-side-developer-jaber.vercel.app/participants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

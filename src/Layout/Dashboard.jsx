@@ -19,7 +19,7 @@ const Dashboard = () => {
     const checkUserRole = async () => {
       if (user?.email) {
         const res = await fetch(
-          `http://localhost:5000/users/${user.email}`
+          `https://b10a12-server-side-developer-jaber.vercel.app/users/${user.email}`
         )
         const data = await res.json()
         setIsOrganizer(data.role === 'organizer')
@@ -37,7 +37,7 @@ const Dashboard = () => {
             <h2 className='mb-5 font-bold text-2xl'>Organizer Dashboard</h2>
             <nav>
               <NavLink
-                to='/dashboard/'
+                to='/dashboard/organizer-profile'
                 className={({ isActive }) =>
                   `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
                     isActive ? 'bg-gray-500' : ''

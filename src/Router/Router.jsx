@@ -10,6 +10,7 @@ import OrganizerProfile from '../Pages/Dashboard/Organizer/OrganizerProfile'
 import PrivetRouts from './PrivetRouts'
 import AddCamp from '../Pages/Dashboard/Organizer/AddCamp'
 import ManageCamps from '../Pages/Dashboard/Organizer/ManageCamps'
+import ManageRegisteredCamps from '../Pages/Dashboard/Organizer/ManageRegisteredCamps'
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
           </PrivetRouts>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/madical_camp/${params.id}`)
+          fetch(`https://b10a12-server-side-developer-jaber.vercel.app/madical_camp/${params.id}`)
       }
     ]
   },
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/dashboard/',
+        path: '/dashboard/organizer-profile',
         element: (
           <PrivetRouts>
             <OrganizerProfile></OrganizerProfile>
@@ -80,7 +81,7 @@ const router = createBrowserRouter([
         path: '/dashboard/manage-registered-camps',
         element: (
           <PrivetRouts>
-            <AddCamp></AddCamp>
+            <ManageRegisteredCamps></ManageRegisteredCamps>
           </PrivetRouts>
         )
       },

@@ -17,7 +17,7 @@ const AddCamp = () => {
 
     try {
       // Send data to the server
-      const response = await axios.post("http://localhost:5000/madical_camp", data);
+      const response = await axios.post("https://b10a12-server-side-developer-jaber.vercel.app/madical_camp", data);
       if (response.status === 201) {
         toast.success("Camp added successfully!");
         reset();

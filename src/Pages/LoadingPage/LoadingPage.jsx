@@ -1,11 +1,10 @@
-import { Spin } from "antd";
-import { Button } from "daisyui";
+import { Button, Spin } from "antd";
 import { motion } from "framer-motion";
 
 const LoadingPage = () => {
   return (
     <div className="flex flex-col justify-center items-center bg-gradient-to-br from-indigo-500 to-purple-700 min-h-screen text-white">
-      {/* Loader Section */}
+      Loader Section
       <motion.div
         className="flex flex-col justify-center items-center"
         initial={{ scale: 0.8, opacity: 0 }}

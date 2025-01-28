@@ -11,7 +11,7 @@ import useAxiosPublic from '../../Hook/useAxiosPublic'
 import { message } from 'antd'
 
 const JoinUs = () => {
-  const { loginWithGoogle, loginUser, user, setUser } = useContext(AuthContext)
+  const { loginWithGoogle, loginUser, user,setLoder, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
   const axiosPublic = useAxiosPublic();
