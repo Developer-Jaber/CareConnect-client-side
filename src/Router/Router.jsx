@@ -13,6 +13,7 @@ import ManageCamps from '../Pages/Dashboard/Organizer/ManageCamps'
 import ManageRegisteredCamps from '../Pages/Dashboard/Organizer/ManageRegisteredCamps'
 import AnalyticsPage from '../Pages/Dashboard/Participent/AnalyticsPage'
 import ParticipantProfile from '../Pages/Dashboard/Participent/ParticipantProfile'
+import RegisteredCamps from '../Pages/Dashboard/Participent/RegisteredCamps'
 
 const router = createBrowserRouter([
   {
@@ -107,7 +108,7 @@ const router = createBrowserRouter([
         path: '/dashboard/registered-camps',
         element: (
           <PrivetRouts>
-            <AddCamp></AddCamp>
+            <RegisteredCamps></RegisteredCamps>
           </PrivetRouts>
         )
       },
