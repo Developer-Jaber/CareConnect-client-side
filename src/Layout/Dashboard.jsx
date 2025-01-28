@@ -89,7 +89,7 @@ const Dashboard = () => {
               <h2 className='mb-5 font-bold text-2xl'>Participant Dashboard</h2>
               <nav>
                 <NavLink
-                  to='/dashboard/participant-profile'
+                  to='/dashboard/analytics'
                   className={({ isActive }) =>
                     `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
                       isActive ? 'bg-gray-500' : ''
@@ -100,7 +100,7 @@ const Dashboard = () => {
                   <span>Analytics</span>
                 </NavLink>
                 <NavLink
-                  to='/dashboard/add-camp'
+                  to='/dashboard/participant-profile'
                   className={({ isActive }) =>
                     `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
                       isActive ? 'bg-gray-500' : ''
@@ -111,7 +111,7 @@ const Dashboard = () => {
                   <span>Participant Profile</span>
                 </NavLink>
                 <NavLink
-                  to='/dashboard/manage-camps'
+                  to='/dashboard/registered-camps'
                   className={({ isActive }) =>
                     `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
                       isActive ? 'bg-gray-500' : ''
@@ -122,7 +122,7 @@ const Dashboard = () => {
                   <span>Registered Camps</span>
                 </NavLink>
                 <NavLink
-                  to='/dashboard/manage-registered-camps'
+                  to='/dashboard/payment-history'
                   className={({ isActive }) =>
                     `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
                       isActive ? 'bg-gray-500' : ''

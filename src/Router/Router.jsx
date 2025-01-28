@@ -11,6 +11,7 @@ import PrivetRouts from './PrivetRouts'
 import AddCamp from '../Pages/Dashboard/Organizer/AddCamp'
 import ManageCamps from '../Pages/Dashboard/Organizer/ManageCamps'
 import ManageRegisteredCamps from '../Pages/Dashboard/Organizer/ManageRegisteredCamps'
+import AnalyticsPage from '../Pages/Dashboard/Participent/AnalyticsPage'
 
 const router = createBrowserRouter([
   {
@@ -89,7 +90,7 @@ const router = createBrowserRouter([
         path: '/dashboard/analytics',
         element: (
           <PrivetRouts>
-            <AddCamp></AddCamp>
+            <AnalyticsPage></AnalyticsPage>
           </PrivetRouts>
         )
       },
