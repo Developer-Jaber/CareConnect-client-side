@@ -14,6 +14,7 @@ import ManageRegisteredCamps from '../Pages/Dashboard/Organizer/ManageRegistered
 import AnalyticsPage from '../Pages/Dashboard/Participent/AnalyticsPage'
 import ParticipantProfile from '../Pages/Dashboard/Participent/ParticipantProfile'
 import RegisteredCamps from '../Pages/Dashboard/Participent/RegisteredCamps'
+import PaymentHistory from '../Pages/Dashboard/Participent/PaymentHistory'
 
 const router = createBrowserRouter([
   {
@@ -116,7 +117,7 @@ const router = createBrowserRouter([
         path: '/dashboard/pyment-history',
         element: (
           <PrivetRouts>
-            <AddCamp></AddCamp>
+            <PaymentHistory></PaymentHistory>
           </PrivetRouts>
         )
       }

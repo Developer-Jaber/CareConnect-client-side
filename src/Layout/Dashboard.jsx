@@ -122,7 +122,7 @@ const Dashboard = () => {
                   <span>Registered Camps</span>
                 </NavLink>
                 <NavLink
-                  to='/dashboard/payment-history'
+                  to='/dashboard/pyment-history'
                   className={({ isActive }) =>
                     `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
                       isActive ? 'bg-gray-500' : ''
