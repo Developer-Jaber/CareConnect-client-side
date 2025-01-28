@@ -6,9 +6,10 @@ import JoinUs from '../Pages/JoinUs/JoinUs'
 import Register from '../Pages/Register/Register'
 import CampDetails from '../Pages/CampDetails/CampDetails'
 import Dashboard from '../Layout/Dashboard'
-import OrganizerProfile from '../Pages/Dashboard/OrganizerProfile/OrganizerProfile'
+import OrganizerProfile from '../Pages/Dashboard/Organizer/OrganizerProfile'
 import PrivetRouts from './PrivetRouts'
-import AddCamp from '../Pages/Dashboard/OrganizerProfile/AddCamp'
+import AddCamp from '../Pages/Dashboard/Organizer/AddCamp'
+import ManageCamps from '../Pages/Dashboard/Organizer/ManageCamps'
 
 const router = createBrowserRouter([
   {
@@ -45,15 +46,75 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivetRouts>
+        <Dashboard></Dashboard>
+      </PrivetRouts>
+    ),
     children: [
       {
         path: '/dashboard/',
-        element: <OrganizerProfile></OrganizerProfile>
+        element: (
+          <PrivetRouts>
+            <OrganizerProfile></OrganizerProfile>
+          </PrivetRouts>
+        )
       },
       {
         path: '/dashboard/add-camp',
-        element: <AddCamp></AddCamp>
+        element: (
+          <PrivetRouts>
+            <AddCamp></AddCamp>
+          </PrivetRouts>
+        )
+      },
+      {
+        path: '/dashboard/manage-camps',
+        element: (
+          <PrivetRouts>
+            <ManageCamps></ManageCamps>
+          </PrivetRouts>
+        )
+      },
+      {
+        path: '/dashboard/manage-registered-camps',
+        element: (
+          <PrivetRouts>
+            <AddCamp></AddCamp>
+          </PrivetRouts>
+        )
+      },
+      {
+        path: '/dashboard/analytics',
+        element: (
+          <PrivetRouts>
+            <AddCamp></AddCamp>
+          </PrivetRouts>
+        )
+      },
+      {
+        path: '/dashboard/prticipant-profile',
+        element: (
+          <PrivetRouts>
+            <AddCamp></AddCamp>
+          </PrivetRouts>
+        )
+      },
+      {
+        path: '/dashboard/registered-camps',
+        element: (
+          <PrivetRouts>
+            <AddCamp></AddCamp>
+          </PrivetRouts>
+        )
+      },
+      {
+        path: '/dashboard/pyment-history',
+        element: (
+          <PrivetRouts>
+            <AddCamp></AddCamp>
+          </PrivetRouts>
+        )
       }
     ]
   }

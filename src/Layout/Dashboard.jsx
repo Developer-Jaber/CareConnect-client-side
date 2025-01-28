@@ -1,3 +1,4 @@
+import { useContext, useEffect, useState } from 'react'
 import { FaHome, FaUser } from 'react-icons/fa'
 import { IoAnalytics } from 'react-icons/io5'
 import {
@@ -7,9 +8,26 @@ import {
   MdPayment
 } from 'react-icons/md'
 import { Outlet, NavLink } from 'react-router-dom'
+import { AuthContext } from '../Provider/AuthProvider'
 
 const Dashboard = () => {
-  const isOrganizer = true
+  const {user} = useContext(AuthContext);
+  const [isOrganizer, setIsOrganizer] = useState(false)
+
+  // Fetch user role from backend
+  useEffect(() => {
+    const checkUserRole = async () => {
+      if (user?.email) {
+        const res = await fetch(
+          `http://localhost:5000/users/${user.email}`
+        )
+        const data = await res.json()
+        setIsOrganizer(data.role === 'organizer')
+      }
+    }
+    checkUserRole()
+  }, [user])
+
   return (
     <div className='flex min-h-screen'>
       {/* Sidebar */}
