@@ -1,11 +1,30 @@
 import { Link } from 'react-router-dom'
 import Logo from '../img/ConnectCareLogo.webp'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../Provider/AuthProvider'
 import { Button, message } from 'antd'
 
 const Navber = () => {
   const { user, userLogOut } = useContext(AuthContext)
+
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   const link = (
     <>
       <li>
@@ -27,7 +46,13 @@ const Navber = () => {
       })
   }
   return (
-    <div className='bg-base-100 mx-auto w-10/12 navbar'>
+    <div
+      className={`w-12/12 px-10 lg:px-20 transition-all duration-300 navbar  ${
+        scrolled
+          ? 'bg-[#b5f4de] shadow-md fixed top-0 left-0 z-50 py-2 px-5 lg:px-20'
+          : 'bg-transparent'
+      }`}
+    >
       <div className='navbar-start'>
         <div className='dropdown'>
           <div tabIndex={0} role='button' className='lg:hidden btn btn-ghost'>
@@ -48,7 +73,7 @@ const Navber = () => {
           </div>
           <ul
             tabIndex={0}
-            className='z-[1] bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm'
+            className='z-[1] bg-base-100 shadow mt-3 p-2 rounded-box w-52 font-semibold text-xl dropdown-content menu menu-sm'
           >
             {link}
           </ul>
@@ -58,7 +83,7 @@ const Navber = () => {
           CareConnect Camps
         </a>
       </div>
-      <div className='lg:flex hidden navbar-center'>
+      <div className='hidden lg:flex font-semibold text-xl navbar-center'>
         <ul className='px-1 text-lg menu menu-horizontal'>{link}</ul>
       </div>
       <div className='navbar-end'>
@@ -102,7 +127,7 @@ const Navber = () => {
             </ul>
           </div>
         ) : (
-          <Link to='/join-us' className='btn btn-primary'>
+          <Link to='/join-us' className='bg-[#42bb76] hover:bg-[#72f4aa] font-semibold text-gray-200 hover:text-white text-lg btn'>
             Join Us
           </Link>
         )}

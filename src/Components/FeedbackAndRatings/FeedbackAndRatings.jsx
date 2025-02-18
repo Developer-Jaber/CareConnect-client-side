@@ -56,7 +56,7 @@ const FeedbackAndRatings = () => {
   ];
 
   return (
-    <div className="shadow-xl mx-auto w-8/12">
+    <div className="shadow-xl mx-auto my-10 w-8/12">
       <h1 className="mb-8 font-bold text-3xl text-center">
         Feedback & Ratings
       </h1>
