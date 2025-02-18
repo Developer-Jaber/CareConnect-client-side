@@ -26,8 +26,7 @@ const JoinUs = () => {
   const handleLogin = data => {
     // Logic for email/password login
     loginUser(data.email, data.password)
-      .then(result => {
-        setUser(result)
+      .then(() => {
         navigate(from, { replace: true })
       })
       .catch(error => {
@@ -37,6 +36,7 @@ const JoinUs = () => {
   }
 
   const handleSocialLogin = () => {
+    // Logic for with google login
     loginWithGoogle()
       .then((result) => {
         const userInfo = {
@@ -97,18 +97,18 @@ const JoinUs = () => {
         <div className='space-y-2'>
           <button
             onClick={handleSocialLogin}
-            className='flex items-center gap-2 w-full btn btn-outline'
+            className='flex items-center gap-2 btn-outline w-full btn'
           >
             <GoogleOutlined /> Login with Google
           </button>
-          <button className='flex items-center gap-2 w-full btn btn-outline'>
+          <button className='flex items-center gap-2 btn-outline w-full btn'>
             <GithubOutlined /> Login with GitHub
           </button>
-          <button className='flex items-center gap-2 w-full btn btn-outline'>
+          <button className='flex items-center gap-2 btn-outline w-full btn'>
             <FacebookOutlined /> Login with Facebook
           </button>
         </div>
-        <p className='mt-4 text-center text-sm'>
+        <p className='mt-4 text-sm text-center'>
           Don't have an account?{' '}
           <span
             onClick={() => navigate('/register')}

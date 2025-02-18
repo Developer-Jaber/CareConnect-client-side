@@ -95,14 +95,13 @@ const Navber = () => {
               className='avatar btn btn-circle btn-ghost'
             >
               <div className='rounded-full w-10'>
-                {user && user?.photoURL ? (
-                  <img src={user.photoURL} alt='' />
-                ) : (
-                  <img
-                    alt='Tailwind CSS Navbar component'
-                    src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
-                  />
-                )}
+                <img
+                  src={
+                    user?.photoURL ||
+                    'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
+                  }
+                  alt=''
+                />
               </div>
             </div>
             <ul
@@ -127,7 +126,10 @@ const Navber = () => {
             </ul>
           </div>
         ) : (
-          <Link to='/join-us' className='bg-[#42bb76] hover:bg-[#72f4aa] font-semibold text-gray-200 hover:text-white text-lg btn'>
+          <Link
+            to='/join-us'
+            className='bg-[#42bb76] hover:bg-[#72f4aa] font-semibold text-gray-200 hover:text-white text-lg btn'
+          >
             Join Us
           </Link>
         )}
