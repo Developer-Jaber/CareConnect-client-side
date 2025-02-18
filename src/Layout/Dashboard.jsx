@@ -31,12 +31,17 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className='flex min-h-96'>
+      <div className='flex min-h-screen'>
         {/* Sidebar */}
-        <aside className='bg-green-900 p-5 w-72 text-white'>
+        <aside className='bg-[#b5f4de] p-5 w-72 text-black'>
           {isOrganizer ? (
             <>
-              <h2 className='mb-5 font-bold text-2xl'>Organizer Dashboard</h2>
+              <div>
+                <img className='mx-auto rounded-full w-20' src={user && user?.photoURL} alt="" />
+                <h1 className='font-bold text-center'>{user && user?.displayName}</h1>
+                <p className='font-bold text-center'>{user && user?.email}</p>
+              </div>
+              <div className='divider'></div>
               <nav>
                 <NavLink
                   to='/dashboard/organizer-profile'
@@ -86,8 +91,13 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              <h2 className='mb-5 font-bold text-2xl'>Participant Dashboard</h2>
-              <nav>
+              <div>
+                <img className='mx-auto my-7 rounded-full w-20' src={user && user?.photoURL} alt="" />
+                <h1 className='my-1 font-bold text-3xl text-center'>{user && user?.displayName}</h1>
+                <p className='font-bold text-gray-500 text-center'>{user && user?.email}</p>
+              </div>
+              <div className='divider'></div>
+              <nav className='font-semiboldbold'>
                 <NavLink
                   to='/dashboard/analytics'
                   className={({ isActive }) =>
@@ -135,7 +145,7 @@ const Dashboard = () => {
               </nav>
             </>
           )}
-          <div className='divider divider-info'></div>
+          <div className='divider'></div>
           <nav>
             <NavLink
               to='/'
