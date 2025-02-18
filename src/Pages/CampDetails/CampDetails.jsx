@@ -56,7 +56,7 @@ const CampDetails = () => {
   };
 
   return (
-    <div className="bg-gray-100 shadow-lg mx-auto my-10 px-4 py-10 camp-details-page rounded-lg w-11/12 container">
+    <div className="bg-gray-100 shadow-lg mx-auto my-10 camp-details-page px-4 py-10 rounded-lg w-11/12 container">
       {/* Header Section */}
       <div className="flex md:flex-row flex-col items-start gap-8">
         <img
@@ -65,7 +65,7 @@ const CampDetails = () => {
           className="shadow-md rounded-lg w-full md:w-1/2"
         />
         <div className="flex-1">
-          <h1 className="font-bold text-4xl text-blue-700">{camp.name}</h1>
+          <h1 className="font-bold text-blue-700 text-4xl">{camp.name}</h1>
           <p className="mt-2 text-gray-600 text-lg">{camp.description}</p>
 
           {/* Camp Details */}
@@ -90,7 +90,7 @@ const CampDetails = () => {
           {/* Join Camp Button */}
           <button
             onClick={showModal}
-            className="mt-6 px-6 py-3 rounded-lg font-semibold text-lg btn btn-primary"
+            className="bg-[#42bb76] hover:bg-[#b8c7bf] mt-6 px-6 py-2 rounded-lg font-semibold text-gray-200 hover:text-gray-600 text-lg btn"
           >
             Join Camp
           </button>
@@ -172,12 +172,12 @@ const CampDetails = () => {
           </Form.Item>
 
           <div className="text-right">
-            <button
+            {user?(<button
               type="submit"
-              className="mt-4 px-6 py-2 rounded-lg btn btn-primary"
+              className="bg-[#42bb76] hover:bg-[#b8c7bf] mt-4 px-6 py-2 rounded-lg font-bold text-gray-200 hover:text-gray-600 btn"
             >
               Confirm Registration
-            </button>
+            </button>) : (<span className="font-semibold text-red-500">For Confirm Ragistration you need to login before!</span>)}
           </div>
         </Form>
       </Modal>

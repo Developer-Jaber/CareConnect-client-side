@@ -39,13 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/camp-details/:id',
-        element: (
-          <PrivetRouts>
-            <CampDetails></CampDetails>
-          </PrivetRouts>
-        ),
+        element: <CampDetails></CampDetails>,
         loader: ({ params }) =>
-          fetch(`https://b10a12-server-side-developer-jaber.vercel.app/madical_camp/${params.id}`)
+          fetch(
+            `https://b10a12-server-side-developer-jaber.vercel.app/madical_camp/${params.id}`
+          )
       }
     ]
   },
