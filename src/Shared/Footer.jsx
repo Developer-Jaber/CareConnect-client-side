@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-green-200 p-10">
+    <footer className="bg-gray-200 p-10">
       <div className="gap-8 grid grid-cols-1 md:grid-cols-4">
         {/* About Section */}
         <div>
@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="border-white/30 mt-8 pt-4 border-t text-center text-sm">
+      <div className="mt-8 pt-4 border-white/30 border-t text-sm text-center">
         © 2025 Medical Camp Management System. All rights reserved. Built with ❤️ by Jaber Hossain.
       </div>
     </footer>
