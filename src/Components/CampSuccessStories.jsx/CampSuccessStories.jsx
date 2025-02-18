@@ -27,8 +27,8 @@ const CampSuccessStories = () => {
   ];
 
   return (
-    <div className="mt-10 min-h-screen">
-      <h1 className="mb-8 font-bold text-4xl text-center">
+    <div className="mt-24 min-h-screen">
+      <h1 className="mb-10 font-bold text-[#1A8A83] text-4xl text-center">
         Camp Success Stories
       </h1>
       <div className="gap-8 grid grid-cols-1 md:grid-cols-2">
@@ -51,7 +51,7 @@ const CampSuccessStories = () => {
               }
               className="shadow-xl w-full max-w-md"
             >
-              <h2 className="font-semibold text-2xl text-gray-800">
+              <h2 className="font-semibold text-blue-800 text-2xl">
                 {story.campName}
               </h2>
               <p className="text-gray-600">Participant: {story.participant}</p>

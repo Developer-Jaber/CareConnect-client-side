@@ -20,7 +20,7 @@ const PopularCamps = () => {
     .slice(0, 6);
 
   return (
-    <div className="mx-auto py-12 w-11/12 popular-camps-section">
+    <div className="mx-auto py-12 popular-camps-section w-11/12">
       <div className="mx-auto px-4 container">
         {/* Section Title */}
         <div className="mb-8 text-center">
@@ -66,12 +66,11 @@ const PopularCamps = () => {
                 }
               />
               <Link to={`/camp-details/${camp._id}`}>
-                <Button
-                  type="primary"
-                  className="bg-blue-600 hover:bg-blue-700 mt-4 border-none w-full"
+                <button
+                  className="bg-[#42bb76] hover:bg-[#b8c7bf] mt-4 border-none w-full font-bold text-gray-200 hover:text-gray-600 btn"
                 >
                   View Details
-                </Button>
+                </button>
               </Link>
             </Card>
           ))}
@@ -80,7 +79,7 @@ const PopularCamps = () => {
         {/* See All Camps Button */}
         <div className="mt-10 text-center">
           <Link to="/available-camps-page">
-            <button className="px-6 py-3 rounded-lg font-semibold text-lg btn btn-primary">
+            <button className="bg-[#42bb76] hover:bg-[#b8c7bf] mt-10 px-6 py-2 rounded-lg font-semibold text-gray-200 hover:text-gray-600 text-xl btn">
               See All Camps
             </button>
           </Link>
