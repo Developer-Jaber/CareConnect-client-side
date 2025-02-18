@@ -25,7 +25,7 @@ const PopularCamps = () => {
         {/* Section Title */}
         <div className="mb-8 text-center">
           <h2 className="font-bold text-[#1A8A83] text-3xl">Popular Medical Camps</h2>
-          <p className="mt-2 text-gray-600">Discover our top-rated medical camps with the highest participation!</p>
+          <p className="mt-2 font-semibold text-gray-600">Discover our top-rated medical camps with the highest participation!</p>
         </div>
 
         {/* Camp Cards */}
@@ -44,30 +44,27 @@ const PopularCamps = () => {
               }
             >
               <Meta
-                title={<h3 className="font-semibold text-blue-800 text-xl">{camp.name}</h3>}
+                title={<h3 className="my-3 font-bold text-blue-800 text-xl">{camp.name}</h3>}
                 description={
                   <div className="mt-2 text-sm">
-                    <p>
-                      <strong>Fees:</strong> ${camp.fees}
+                    <p className="font-bold">
+                      <span className="text-black text-lg">Date & Time: </span> {camp.dateTime}
                     </p>
-                    <p>
-                      <strong>Date & Time:</strong> {camp.dateTime}
+                    <p className="font-bold">
+                      <span className="text-black text-lg">Location: </span> {camp.location}
                     </p>
-                    <p>
-                      <strong>Location:</strong> {camp.location}
+                    <p className="font-bold">
+                      <span className="text-black text-lg">Professional: </span> {camp.professional}
                     </p>
-                    <p>
-                      <strong>Professional:</strong> {camp.professional}
-                    </p>
-                    <p>
-                      <strong>Participants:</strong> {camp.participants}
+                    <p className="font-bold">
+                      <span className="text-black text-lg">Participants: </span> {camp.participants}
                     </p>
                   </div>
                 }
               />
               <Link to={`/camp-details/${camp._id}`}>
                 <button
-                  className="bg-[#42bb76] hover:bg-[#b8c7bf] mt-4 border-none w-full font-bold text-gray-200 hover:text-gray-600 btn"
+                  className="bg-[#42bb76] hover:bg-[#b8c7bf] mt-6 border-none w-full font-bold text-gray-200 hover:text-gray-600 btn"
                 >
                   View Details
                 </button>
