@@ -1,45 +1,68 @@
 import { useEffect, useState } from 'react'
-import { Table, Button, Space, Typography, Tag, message, Popconfirm } from 'antd'
+import {
+  Table,
+  Button,
+  Space,
+  Typography,
+  Tag,
+  message,
+  Popconfirm
+} from 'antd'
 
 const { Title } = Typography
 
 const ManageRegisteredCamps = () => {
-  const [registeredCamps, setRegisteredCamps] = useState([])
+  const [registeredCamps, setRegisteredCamps] = useState([]);
 
   useEffect(() => {
     fetch('https://b10a12-server-side-developer-jaber.vercel.app/participants')
-      .then((response) => response.json())
-      .then((data) => setRegisteredCamps(data))
+      .then(response => response.json())
+      .then(data => setRegisteredCamps(data))
   }, [])
 
-  const handleConfirmPayment = (campId) => {
-    fetch(`https://b10a12-server-side-developer-jaber.vercel.app/confirm-payment/${campId}`, {
-      method: 'PATCH'
-    }).then(() => {
-      setRegisteredCamps((prevCamps) =>
-        prevCamps.map((camp) =>
-          camp._id === campId ? { ...camp, confirmationStatus: 'Confirmed' } : camp
+  const handleConfirmPayment = campId => {
+    fetch(
+      `https://b10a12-server-side-developer-jaber.vercel.app/confirm-payment/${campId}`,
+      {
+        method: 'PATCH'
+      }
+    ).then(() => {
+      setRegisteredCamps(prevCamps =>
+        prevCamps.map(camp =>
+          camp._id === campId
+            ? { ...camp, confirmationStatus: 'Confirmed' }
+            : camp
         )
       )
       message.success('Payment confirmed successfully!')
     })
   }
 
-  const handleCancelRegistration = (campId, isPaid, isConfirmed) => {
-    if (isPaid && isConfirmed) {
-      message.error('Cannot cancel a confirmed and paid registration.')
-      return
-    }
-    fetch(`https://b10a12-server-side-developer-jaber.vercel.app/cancel-registration/${campId}`, {
-      method: 'DELETE'
-    }).then(() => {
-      setRegisteredCamps((prevCamps) =>
-        prevCamps.filter((camp) => camp._id !== campId)
-      )
-      message.success('Registration canceled successfully!')
-    })
-  }
 
+  const handleCancelRegistration = async (id, isConfirmed) => {
+    if (isConfirmed) {
+      message.warning("You cannot cancel a confirmed and paid registration.");
+      return;
+    }
+  
+    try {
+      const response = await fetch(`https://b10a12-server-side-developer-jaber.vercel.app/cancel-registration/${id}`, {
+        method: "DELETE",
+      });
+  
+      if (response.ok) {
+        message.success("Registration canceled successfully.");
+        // Update UI state to reflect changes
+        setRegisteredCamps(prevData => prevData.filter(item => item._id !== id));
+      } else {
+        message.error("Failed to cancel registration.");
+      }
+    } catch (error) {
+      message.error("Something went wrong.");
+    }
+  };
+
+  
   const columns = [
     {
       title: 'Camp Name',
@@ -50,7 +73,7 @@ const ManageRegisteredCamps = () => {
       title: 'Camp Fees',
       dataIndex: 'campFees',
       key: 'campFees',
-      render: (fees) => `${fees}`
+      render: fees => `${fees}`
     },
     {
       title: 'Participant Name',
@@ -61,10 +84,8 @@ const ManageRegisteredCamps = () => {
       title: 'Payment Status',
       dataIndex: 'paymentStatus',
       key: 'paymentStatus',
-      render: (status) => (
-        <Tag color={status === 'Paid' ? 'green' : 'volcano'}>
-          {status}
-        </Tag>
+      render: status => (
+        <Tag color={status === 'Paid' ? 'green' : 'volcano'}>{status}</Tag>
       )
     },
     {
@@ -91,7 +112,7 @@ const ManageRegisteredCamps = () => {
             onConfirm={() =>
               handleCancelRegistration(
                 record._id,
-                record.paymentStatus === 'Paid',
+                // record.paymentStatus === 'Paid',
                 record.confirmationStatus === 'Confirmed'
               )
             }
@@ -100,7 +121,10 @@ const ManageRegisteredCamps = () => {
           >
             <Button
               type='danger'
-              disabled={record.paymentStatus === 'Paid' && record.confirmationStatus === 'Confirmed'}
+              disabled={
+                record.paymentStatus === 'Paid' &&
+                record.confirmationStatus === 'Confirmed'
+              }
             >
               Cancel
             </Button>
@@ -112,12 +136,16 @@ const ManageRegisteredCamps = () => {
 
   return (
     <div className='bg-base-200 p-5'>
-      <Title level={2} style={{fontWeight: "bold", color: "#1A8A83" , fontSize: "2rem"}}className='mb-5 text-center'>
+      <Title
+        level={2}
+        style={{ fontWeight: 'bold', color: '#1A8A83', fontSize: '2rem' }}
+        className='mb-5 text-center'
+      >
         Manage Registered Camps
       </Title>
       <Table
         columns={columns}
-        dataSource={registeredCamps.map((camp) => ({ ...camp, key: camp._id }))}
+        dataSource={registeredCamps.map(camp => ({ ...camp, key: camp._id }))}
         bordered
         pagination={{ pageSize: 5 }}
       />
