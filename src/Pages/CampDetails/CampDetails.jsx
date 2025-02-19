@@ -30,7 +30,7 @@ const CampDetails = () => {
       campFees: camp.fees,
       location: camp.location,
       professional: camp.professional,
-      participantName: user.name,
+      participantName: user.displayName,
       participantEmail: user.email,
     };
 
