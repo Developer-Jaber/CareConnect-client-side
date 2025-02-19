@@ -31,7 +31,7 @@ const AddCamp = () => {
   return (
     <div className="flex justify-center items-center bg-gray-100 p-4 min-h-screen">
       <div className="bg-white shadow-lg p-6 rounded-lg w-full max-w-2xl">
-        <h2 className="mb-6 font-bold text-2xl text-center text-gray-700">Add A New Camp</h2>
+        <h2 className="mb-6 font-bold text-[#1A8A83] text-3xl text-center">Add A New Camp</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Camp Name */}
           <div>
@@ -41,7 +41,7 @@ const AddCamp = () => {
               {...register("name", { required: "Camp name is required" })}
               className="input-bordered w-full input"
             />
-            {errors.name && <p className="text-red-500 text-sm">{errors.campName.message}</p>}
+            {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
           </div>
 
           {/* Image URL */}
@@ -66,7 +66,7 @@ const AddCamp = () => {
               })}
               className="input-bordered w-full input"
             />
-            {errors.fees && <p className="text-red-500 text-sm">{errors.campFees.message}</p>}
+            {errors.fees && <p className="text-red-500 text-sm">{errors.fees.message}</p>}
           </div>
 
           {/* Date & Time */}
@@ -100,7 +100,7 @@ const AddCamp = () => {
               className="input-bordered w-full input"
             />
             {errors.professional && (
-              <p className="text-red-500 text-sm">{errors.healthcareProfessional.message}</p>
+              <p className="text-red-500 text-sm">{errors.professional.message}</p>
             )}
           </div>
 
@@ -117,7 +117,7 @@ const AddCamp = () => {
 
           {/* Submit Button */}
           <div className="flex justify-center">
-            <button type="submit" className="w-full btn btn-primary">
+            <button type="submit" className="bg-[#42bb76] hover:bg-[#b8c7bf] w-full font-bold text-gray-200 hover:text-gray-600 text-xl btn">
               Add Camp
             </button>
           </div>
