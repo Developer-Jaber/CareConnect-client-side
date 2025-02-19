@@ -15,6 +15,7 @@ import AnalyticsPage from '../Pages/Dashboard/Participent/AnalyticsPage'
 import ParticipantProfile from '../Pages/Dashboard/Participent/ParticipantProfile'
 import RegisteredCamps from '../Pages/Dashboard/Participent/RegisteredCamps'
 import PaymentHistory from '../Pages/Dashboard/Participent/PaymentHistory'
+import DashbordMain from '../Layout/DashbordMain'
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
       </PrivetRouts>
     ),
     children: [
+      {
+        path: '/dashboard',
+        element: (
+          <PrivetRouts>
+            <DashbordMain></DashbordMain>
+          </PrivetRouts>
+        )
+      },
       {
         path: '/dashboard/organizer-profile',
         element: (
