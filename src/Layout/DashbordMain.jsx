@@ -2,10 +2,28 @@ import Stack from '@mui/material/Stack'
 
 import { BarChart } from '@mui/x-charts'
 import { PieChart } from '@mui/x-charts'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../Provider/AuthProvider'
 
 const DashbordMain = () => {
   const [highlightedItem, setHighLightedItem] = useState(null)
+  const { user } = useContext(AuthContext)
+  const [isOrganizer, setIsOrganizer] = useState(false)
+
+  // Fetch user role from backend
+  useEffect(() => {
+    const checkUserRole = async () => {
+      if (user?.email) {
+        const res = await fetch(
+          `https://b10a12-server-side-developer-jaber.vercel.app/users/${user.email}`
+        )
+        const data = await res.json()
+        setIsOrganizer(data.role === 'organizer')
+      }
+    }
+    checkUserRole()
+  }, [user])
+
   const barChartsProps = {
     series: [
       {
@@ -48,9 +66,17 @@ const DashbordMain = () => {
   return (
     <div>
       <div className='flex justify-between items-center m-8'>
-        <h1 className='font-bold text-gray-700 text-2xl'>
-          Participant Dashboard
-        </h1>
+        <div>
+          {isOrganizer ? (
+            <h1 className='font-bold text-gray-700 text-2xl'>
+              Organizer Dashboard
+            </h1>
+          ) : (
+            <h1 className='font-bold text-gray-700 text-2xl'>
+              Participant Dashboard
+            </h1>
+          )}
+        </div>
         <label className='flex items-center gap-2 input-bordered input'>
           <input type='text' className='grow' placeholder='Search' />
           <svg
@@ -71,7 +97,7 @@ const DashbordMain = () => {
         <Stack
           direction={{ xs: 'column', xl: 'row' }}
           spacing={1}
-          sx={{ width: '80%'}}
+          sx={{ width: '80%' }}
           className='gap-16'
         >
           <BarChart
@@ -80,6 +106,7 @@ const DashbordMain = () => {
             onHighlightChange={setHighLightedItem}
             className='shadow-md border-2'
           />
+          
           <PieChart
             {...pieChartProps}
             highlightedItem={highlightedItem}

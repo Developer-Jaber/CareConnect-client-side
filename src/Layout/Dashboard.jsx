@@ -37,9 +37,9 @@ const Dashboard = () => {
           {isOrganizer ? (
             <>
               <div>
-                <img className='mx-auto rounded-full w-20' src={user && user?.photoURL} alt="" />
-                <h1 className='font-bold text-center'>{user && user?.displayName}</h1>
-                <p className='font-bold text-center'>{user && user?.email}</p>
+                <img className='shadow-lg mx-auto my-6 border-2 border-gray-300 rounded-full w-24 h-24 object-cover' src={user && user?.photoURL} alt="" />
+                <h1 className='font-bold text-3xl text-center'>{user && user?.displayName}</h1>
+                <p className='font-bold text-gray-500 text-center'>{user && user?.email}</p>
               </div>
               <div className='divider'></div>
               <nav>
@@ -92,7 +92,7 @@ const Dashboard = () => {
           ) : (
             <>
               <div>
-                <img className='mx-auto my-7 rounded-full w-20' src={user && user?.photoURL} alt="" />
+                <img className='shadow-lg mx-auto my-6 border-2 border-gray-300 rounded-full w-24 h-24 object-cover' src={user && user?.photoURL} alt="" />
                 <h1 className='my-1 font-bold text-3xl text-center'>{user && user?.displayName}</h1>
                 <p className='font-bold text-gray-500 text-center'>{user && user?.email}</p>
               </div>
