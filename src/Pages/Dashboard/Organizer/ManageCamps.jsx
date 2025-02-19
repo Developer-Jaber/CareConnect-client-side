@@ -10,17 +10,20 @@ const ManageCamps = () => {
   // Fetch camps on component load
   useEffect(() => {
     fetch('https://b10a12-server-side-developer-jaber.vercel.app/madical_camp')
-      .then((response) => response.json())
-      .then((data) => setCamps(data))
+      .then(response => response.json())
+      .then(data => setCamps(data))
   }, [])
 
   // Handle Delete Function
-  const handleDelete = (campId) => {
+  const handleDelete = campId => {
     if (window.confirm('Are you sure you want to delete this camp?')) {
-      fetch(`https://b10a12-server-side-developer-jaber.vercel.app/delete-camp/${campId}`, {
-        method: 'DELETE'
-      }).then(() => {
-        setCamps((prevCamps) => prevCamps.filter((camp) => camp._id !== campId))
+      fetch(
+        `https://b10a12-server-side-developer-jaber.vercel.app/delete-camp/${campId}`,
+        {
+          method: 'DELETE'
+        }
+      ).then(() => {
+        setCamps(prevCamps => prevCamps.filter(camp => camp._id !== campId))
         message.success('Camp deleted successfully!')
       })
     }
@@ -44,7 +47,7 @@ const ManageCamps = () => {
     },
     {
       title: 'Healthcare Professional',
-      dataIndex: 'healthcareProfessional',
+      dataIndex: 'professional',
       key: 'healthcareProfessional'
     },
     {
@@ -53,11 +56,24 @@ const ManageCamps = () => {
       render: (_, record) => (
         <Space>
           <Link to={`/dashboard/update-camp/${record._id}`}>
-            <Button type='primary' size='small'>
+            <Button
+            style={{color: "#262626"}}
+              color='cyan'
+              className='font-bold text-red-500'
+              variant='solid'
+              size='small'
+            >
               Update
             </Button>
           </Link>
-          <Button type='danger' size='small' onClick={() => handleDelete(record._id)}>
+          <Button
+          style={{border: "solid 1px"}}
+            type='danger'
+            variant='outlined'
+            className='font-bold text-red-500'
+            size='small'
+            onClick={() => handleDelete(record._id)}
+          >
             Delete
           </Button>
         </Space>
@@ -67,12 +83,12 @@ const ManageCamps = () => {
 
   return (
     <div className='bg-base-200 p-5'>
-      <Title level={3} className='mb-5 text-center'>
+      <Title level={2} style={{fontWeight: "bold", color: "#1A8A83" , fontSize: "2rem"}} className='mb-5 font-bold text-center'>
         Manage Camps
       </Title>
       <Table
         columns={columns}
-        dataSource={camps.map((camp) => ({ ...camp, key: camp._id }))}
+        dataSource={camps.map(camp => ({ ...camp, key: camp._id }))}
         bordered
         pagination={{ pageSize: 5 }}
       />
