@@ -112,7 +112,7 @@ const ManageRegisteredCamps = () => {
 
   return (
     <div className='bg-base-200 p-5'>
-      <Title level={3} className='mb-5 text-center'>
+      <Title level={2} style={{fontWeight: "bold", color: "#1A8A83" , fontSize: "2rem"}}className='mb-5 text-center'>
         Manage Registered Camps
       </Title>
       <Table
