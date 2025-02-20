@@ -112,7 +112,7 @@ const ManageRegisteredCamps = () => {
             onConfirm={() =>
               handleCancelRegistration(
                 record._id,
-                // record.paymentStatus === 'Paid',
+                record.paymentStatus === 'Paid',
                 record.confirmationStatus === 'Confirmed'
               )
             }

@@ -32,6 +32,7 @@ const CampDetails = () => {
       professional: camp.professional,
       participantName: user.displayName,
       participantEmail: user.email,
+      paymentStatus: "Unpaid",
     };
 
     // Save participant data to the backend
