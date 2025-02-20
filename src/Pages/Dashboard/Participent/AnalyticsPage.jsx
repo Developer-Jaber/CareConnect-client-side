@@ -15,7 +15,7 @@ const AnalyticsPage = () => {
   const fetchCampData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/participants/email/${user?.email}`); 
+      const response = await fetch(`https://b10a12-server-side-developer-jaber.vercel.app/participants/email/${user?.email}`); 
       if (!response.ok) throw new Error("Failed to fetch camp data");
 
       const data = await response.json();
