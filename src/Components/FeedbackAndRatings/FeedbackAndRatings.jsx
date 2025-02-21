@@ -5,24 +5,11 @@ import { MessageOutlined } from "@ant-design/icons";
 const FeedbackAndRatings = () => {
   const [feedbackData, setFeedbackData] = useState([]);
 
-  // Mock API call to fetch feedback data (replace with actual API)
+  // Mock API call to fetch feedback data 
   useEffect(() => {
-    setFeedbackData([
-      {
-        id: 1,
-        participantName: "John Doe",
-        campName: "Heart Health Camp",
-        rating: 5,
-        feedback: "The camp was amazing and insightful!",
-      },
-      {
-        id: 2,
-        participantName: "Jane Smith",
-        campName: "Dental Hygiene Camp",
-        rating: 4,
-        feedback: "Great experience, but more time for Q&A would be nice.",
-      },
-    ]);
+    fetch('https://b10a12-server-side-developer-jaber.vercel.app/feedback')
+      .then(response => response.json())
+      .then(data => setFeedbackData(data))
   }, []);
 
   const columns = [
