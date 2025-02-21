@@ -107,7 +107,7 @@ const RegisteredCamps = () => {
     }
 
     axios
-      .post('http://localhost:5000/feedback', userFeedback)
+      .post('https://b10a12-server-side-developer-jaber.vercel.app/feedback', userFeedback)
       .then(() => {
         message.success(
           `Feedback submitted: "${feedback}" with rating ${rating} stars`
