@@ -16,6 +16,7 @@ import ParticipantProfile from '../Pages/Dashboard/Participent/ParticipantProfil
 import RegisteredCamps from '../Pages/Dashboard/Participent/RegisteredCamps'
 import PaymentHistory from '../Pages/Dashboard/Participent/PaymentHistory'
 import DashbordMain from '../Layout/DashbordMain'
+import SuccessStorySubmission from '../Pages/Dashboard/Participent/SuccessStorySubmission'
 
 const router = createBrowserRouter([
   {
@@ -125,6 +126,14 @@ const router = createBrowserRouter([
         element: (
           <PrivetRouts>
             <PaymentHistory></PaymentHistory>
+          </PrivetRouts>
+        )
+      },
+      {
+        path: '/dashboard/success-story-submission',
+        element: (
+          <PrivetRouts>
+            <SuccessStorySubmission></SuccessStorySubmission>
           </PrivetRouts>
         )
       }

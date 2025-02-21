@@ -10,6 +10,7 @@ import {
 import { Outlet, NavLink } from 'react-router-dom'
 import { AuthContext } from '../Provider/AuthProvider'
 import Footer from '../Shared/Footer'
+import { SnippetsOutlined } from '@ant-design/icons'
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext)
@@ -141,6 +142,17 @@ const Dashboard = () => {
                 >
                   <MdPayment></MdPayment>
                   <span>Payment History</span>
+                </NavLink>
+                <NavLink
+                  to='/dashboard/success-story-submission'
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
+                      isActive ? 'bg-gray-500' : ''
+                    }`
+                  }
+                >
+                  <SnippetsOutlined></SnippetsOutlined>
+                  <span>Write a Succes Story</span>
                 </NavLink>
               </nav>
             </>
