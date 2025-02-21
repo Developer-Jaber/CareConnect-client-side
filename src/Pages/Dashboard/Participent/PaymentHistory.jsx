@@ -1,30 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Table, Tag } from "antd";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const PaymentHistory = () => {
+  const {user} = useContext(AuthContext);
   const [paymentHistory, setPaymentHistory] = useState([]);
 
-  // Mock API call to fetch payment history (replace with actual API)
+  // Mock API call to fetch payment history 
   useEffect(() => {
-    setPaymentHistory([
-      {
-        id: 1,
-        campName: "Heart Health Camp",
-        campFees: "$100",
-        paymentStatus: "Paid",
-        confirmationStatus: "Confirmed",
-        transactionId: "TXN123456789",
-      },
-      {
-        id: 2,
-        campName: "Dental Hygiene Camp",
-        campFees: "$80",
-        paymentStatus: "Unpaid",
-        confirmationStatus: "Pending",
-        transactionId: null,
-      },
-    ]);
+    fetch(`https://b10a12-server-side-developer-jaber.vercel.app/participants/email/${user?.email}`)
+      .then(response => response.json())
+      .then(data => setPaymentHistory(data))
   }, []);
 
   const columns = [
@@ -58,22 +45,22 @@ const PaymentHistory = () => {
     },
     {
       title: "Transaction ID",
-      dataIndex: "transactionId",
-      key: "transactionId",
-      render: (text) => (text ? text : "N/A"),
+      dataIndex: "trxID",
+      key: "trxID",
+      render: (text) => (text ? `TXN${text}` : "N/A"),
     },
   ];
 
   return (
-    <div className="bg-gradient-to-br from-green-400 to-blue-500 p-10 min-h-screen">
-      <h1 className="mb-8 font-bold text-3xl text-center text-white">
+    <div className="p-10 min-h-screen">
+      <h1 className="mb-10 font-bold text-[#1A8A83] text-3xl text-center">
         Payment History
       </h1>
       <Table
         columns={columns}
         dataSource={paymentHistory}
         rowKey="id"
-        className="bg-white shadow-md rounded-lg"
+        className="bg-white shadow-xl rounded-lg"
         pagination={{ pageSize: 5 }}
       />
     </div>
