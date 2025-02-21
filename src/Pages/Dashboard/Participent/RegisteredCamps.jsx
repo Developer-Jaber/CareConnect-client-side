@@ -11,6 +11,7 @@ import {
 } from 'antd'
 import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons'
 import { AuthContext } from '../../../Provider/AuthProvider'
+import axios from 'axios'
 
 const RegisteredCamps = () => {
   const { user } = useContext(AuthContext)
@@ -31,33 +32,38 @@ const RegisteredCamps = () => {
 
   const handlePayment = async camp => {
     const trxID = Math.random().toString(36).substring(2) // Generate transaction ID
-  
+
     try {
       // 🔥 Send a request to update payment status in the database
-      const response = await fetch(`http://localhost:5000/participants/${camp._id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          paymentStatus: "Paid",
-          trxID: trxID,
-        }),
-      })
-  
+      const response = await fetch(
+        `https://b10a12-server-side-developer-jaber.vercel.app/participants/${camp._id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            paymentStatus: 'Paid',
+            trxID: trxID
+          })
+        }
+      )
+
       const result = await response.json()
-  
+
       if (response.ok) {
         message.success(`Payment successful! Transaction ID: ${trxID}`)
-  
+
         // 🔄 Update state to reflect new status in UI
         setCamps(prevCamps =>
           prevCamps.map(item =>
-            item._id === camp._id ? { ...item, paymentStatus: "Paid", trxID } : item
+            item._id === camp._id
+              ? { ...item, paymentStatus: 'Paid', trxID }
+              : item
           )
         )
       } else {
-        throw new Error(result.message || "Failed to update payment status")
+        throw new Error(result.message || 'Failed to update payment status')
       }
     } catch (error) {
       message.error(`Payment failed: ${error.message}`)
@@ -92,13 +98,27 @@ const RegisteredCamps = () => {
   }
 
   // Handle feedback submission
-  const handleFeedbackSubmit = () => {
-    message.success(
-      `Feedback submitted: "${feedback}" with rating ${rating} stars`
-    )
-    setFeedback('')
-    setRating(0)
-    setFeedbackModalVisible(false)
+  const handleFeedbackSubmit = camp => {
+    const userFeedback = {
+      participantName: user.displayName,
+      campName: camp.campName,
+      rating: rating,
+      feedback: feedback
+    }
+
+    axios
+      .post('http://localhost:5000/feedback', userFeedback)
+      .then(() => {
+        message.success(
+          `Feedback submitted: "${feedback}" with rating ${rating} stars`
+        )
+        setFeedback('')
+        setRating(0)
+        setFeedbackModalVisible(false)
+      })
+      .catch(() => {
+        message.error('Somthing went wrong!')
+      })
   }
 
   const columns = [
@@ -183,11 +203,7 @@ const RegisteredCamps = () => {
               okText='Yes'
               cancelText='No'
             >
-              <Button
-                type='danger'
-              >
-                Cancel
-              </Button>
+              <Button type='danger'>Cancel</Button>
             </Popconfirm>
           )}
         </div>
@@ -212,7 +228,7 @@ const RegisteredCamps = () => {
         title={`Feedback for ${selectedCamp?.campName}`}
         visible={feedbackModalVisible}
         onCancel={() => setFeedbackModalVisible(false)}
-        onOk={handleFeedbackSubmit}
+        onOk={() => handleFeedbackSubmit(selectedCamp)}
         okText='Submit'
       >
         <Input.TextArea
