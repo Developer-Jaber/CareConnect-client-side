@@ -18,24 +18,26 @@ const FeedbackAndRatings = () => {
       dataIndex: "participantName",
       key: "participantName",
       render: (text) => <Tag color="blue">{text}</Tag>,
+      responsive: ['md'], // Only show on medium screens and up
     },
     {
       title: "Camp Name",
       dataIndex: "campName",
       key: "campName",
+      responsive: ['sm'], // Only show on small screens and up
     },
     {
       title: "Rating",
       dataIndex: "rating",
       key: "rating",
-      render: (rating) => <Rate disabled defaultValue={rating} />,
+      render: (rating) => <Rate disabled defaultValue={rating} count={3} />, // Reduced stars for mobile
     },
     {
       title: "Feedback",
       dataIndex: "feedback",
       key: "feedback",
       render: (text) => (
-        <div className="flex items-center">
+        <div className="md:flex items-center">
           <MessageOutlined className="mr-2" /> {text}
         </div>
       ),
@@ -53,6 +55,8 @@ const FeedbackAndRatings = () => {
         rowKey="id"
         className="bg-white shadow-md rounded-lg"
         pagination={{ pageSize: 5 }}
+        scroll={{ x: true }} // Enable horizontal scrolling
+        size="small" // Use smaller size on mobile
       />
     </div>
   );
