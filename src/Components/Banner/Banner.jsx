@@ -2,22 +2,29 @@ import { Carousel } from 'antd'
 import Img1 from '../../img/carouselImag/image.png'
 import Img2 from '../../img/carouselImag/image copy.png'
 import Img3 from '../../img/carouselImag/image copy 2.png'
+import banner from '../../img/image.png'
 
 const Banner = () => {
-
   return (
-    <div className='mx-auto py-10 w-7/12'>
-      <Carousel autoplay>
-        <div>
-          <img className='w-full h-96' src={Img1} alt='' />
+    <div className='mx-auto my-20 w-10/12 hero'>
+      <div className='lg:flex-row-reverse flex-col hero-content'>
+        <div className='mx-auto w-5/12'>
+          <img
+            src={banner}
+            className='rounded-lg max-w-sm'
+          />
         </div>
-        <div>
-          <img className='w-full h-96' src={Img2} alt='' />
+        <div className='w-7/12'>
+          <h1 className='font-bold text-5xl'>
+          Organize & Manage Medical Camps with Ease
+          </h1>
+          <p className='py-6'>
+          "Streamline medical camp planning, volunteer coordination, and patient care—all in one platform.
+          Ensure seamless healthcare outreach with smart scheduling, real-time tracking, and automated reporting."
+          </p>
+          <button className='btn btn-primary'>Get Started</button>
         </div>
-        <div>
-          <img className='w-full h-96' src={Img3} alt='' />
-        </div>
-      </Carousel>
+      </div>
     </div>
   )
 }

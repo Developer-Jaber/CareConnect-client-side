@@ -33,6 +33,15 @@ const Navber = () => {
       <li>
         <Link to='/available-camps-page'>Available Camps</Link>
       </li>
+      <li>
+        <Link to='/'>About</Link>
+      </li>
+      <li>
+        <Link to='/'>Contact</Link>
+      </li>
+      <li>
+        <Link to='/'>Blogs</Link>
+      </li>
     </>
   )
 

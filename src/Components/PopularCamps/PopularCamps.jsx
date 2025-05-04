@@ -20,12 +20,12 @@ const PopularCamps = () => {
     .slice(0, 6);
 
   return (
-    <div className="mx-auto py-12 popular-camps-section w-11/12">
-      <div className="mx-auto px-4 container">
+    <div className="mx-auto py-12 w-11/12 popular-camps-section">
+      <div className="mx-auto px-1 sm:px-4 container">
         {/* Section Title */}
-        <div className="mb-8 text-center">
-          <h2 className="font-bold text-[#1A8A83] text-3xl">Popular Medical Camps</h2>
-          <p className="mt-2 font-semibold text-gray-600">Discover our top-rated medical camps with the highest participation!</p>
+        <div className="mb-10 md:mb-20 text-center">
+          <h2 className="font-bold text-[#1A8A83] text-2xl md:text-3xl">Popular Medical Camps</h2>
+          <p className="mt-4 font-semibold text-gray-600">Discover our top-rated medical camps with the highest participation!</p>
         </div>
 
         {/* Camp Cards */}
@@ -34,7 +34,7 @@ const PopularCamps = () => {
             <Card
               key={camp._id}
               hoverable
-              className="shadow-lg camp-card rounded-lg"
+              className="shadow-lg rounded-lg camp-card"
               cover={
                 <img
                   alt={camp.name}
