@@ -45,7 +45,7 @@ const AvailableCampsPage = () => {
   }, [sortOption])
 
   return (
-    <div className='mx-auto my-10 available-camps-page w-11/12'>
+    <div className='mx-auto my-10 w-11/12 available-camps-page'>
       {/* Search Bar */}
       <div className='flex justify-between items-center mb-6'>
         <Input
@@ -67,6 +67,7 @@ const AvailableCampsPage = () => {
         </Select>
         <Button
           type='primary'
+          className='hidden lg:block'
           icon={<SwapOutlined />}
           onClick={() =>
             setLayout(layout === 'three-column' ? 'two-column' : 'three-column')
@@ -86,8 +87,9 @@ const AvailableCampsPage = () => {
         {filteredCamps.map(camp => (
           <Col
             key={camp.id}
-            xs={24}
-            sm={12}
+            xs={24}    // 1 card per row on mobile
+            sm={12}    // 2 cards per row on tablet
+            md={8}    // Optional: Keep 2 cards for smaller laptops
             lg={layout === 'three-column' ? 8 : 12}
           >
             <Card hoverable cover={<img alt={camp.name} src={camp.image} />}>
