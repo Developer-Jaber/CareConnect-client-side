@@ -13,7 +13,7 @@ const CampSuccessStories = () => {
   }, [])
 
   return (
-    <div className='my-28 min-h-screen'>
+    <div className='py-28 min-h-screen'>
       <div className='my-16 text-center'>
         <h1 className='font-bold text-[#1A8A83] text-3xl md:text-4xl lg:text-5xl'>
           Camp Success Stories

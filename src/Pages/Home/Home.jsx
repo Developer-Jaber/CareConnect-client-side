@@ -5,7 +5,7 @@ import PopularCamps from "../../Components/PopularCamps/PopularCamps";
 
 const Home = () => {
     return (
-        <>
+        <div className="bg-[#fef6fd]">
             <section>
                 <Banner></Banner>
             </section>
@@ -18,7 +18,7 @@ const Home = () => {
             <section>
                 <CampSuccessStories></CampSuccessStories>
             </section>
-        </>
+        </div>
     );
 };
 

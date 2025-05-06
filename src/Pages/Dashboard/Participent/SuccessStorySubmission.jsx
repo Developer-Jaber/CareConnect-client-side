@@ -47,7 +47,7 @@ const SuccessStorySubmission = () => {
   }
 
   return (
-    <div className='bg-gray-100 p-8 min-h-screen'>
+    <div className='p-8 min-h-screen'>
       <div className='bg-[#1A8A83] shadow-lg py-10 rounded-lg text-white text-center'>
         <h1 className='font-bold text-4xl'>Share Your Success Story</h1>
         <p className='mt-2 text-lg'>

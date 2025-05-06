@@ -42,6 +42,9 @@ const Navber = () => {
       <li>
         <Link to='/'>Blogs</Link>
       </li>
+      <li className='md:hidden bg-[#2fbc2f] hover:bg-[#72f4aa] rounded-md font-semibold text-gray-200 hover:text-white text-start'>
+        <Link to='/join-us'>Join Us</Link>
+      </li>
     </>
   )
 
@@ -56,15 +59,15 @@ const Navber = () => {
   }
   return (
     <div
-      className={`w-12/12 md:px-10 lg:px-20 transition-all duration-300 navbar  ${
+      className={`w-12/12 bg-[#fef6fd] md:px-10 lg:px-20 transition-all duration-300 navbar p-2  ${
         scrolled
-          ? 'bg-[#b5f4de] shadow-md fixed top-0 left-0 z-50 py-2 px-5 lg:px-20'
-          : 'bg-transparent'
+          ? 'bg-[#b5f4de] shadow-md fixed top-0 left-0 z-50 py-2 lg:px-20'
+          : 'bg-[#fef6fd]'
       }`}
     >
       <div className='navbar-start'>
         <div className='dropdown'>
-          <div tabIndex={0} role='button' className='lg:hidden btn btn-ghost'>
+          <div tabIndex={0} role='button' className='lg:hidden p-2 btn btn-ghost'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='w-5 h-5'
@@ -87,8 +90,8 @@ const Navber = () => {
             {link}
           </ul>
         </div>
-        <img className='rounded-lg w-8 md:w-14' src={Logo} alt='' />
-        <a className='font-bold text-[#1A8A83] md:text-2xl btn btn-ghost'>
+        <img className='rounded-lg w-7 md:w-14' src={Logo} alt='' />
+        <a className='font-bold text-[#6be26b] text-[1.3rem] md:text-3xl btn btn-ghost'>
           CareConnect Camps
         </a>
       </div>
@@ -137,7 +140,7 @@ const Navber = () => {
         ) : (
           <Link
             to='/join-us'
-            className='bg-[#42bb76] hover:bg-[#72f4aa] font-semibold text-gray-200 hover:text-white text-lg btn'
+            className='hidden md:flex items-center bg-[#2fbc2f] hover:bg-[#72f4aa] font-semibold text-gray-200 hover:text-white md:text-lg btn'
           >
             Join Us
           </Link>
