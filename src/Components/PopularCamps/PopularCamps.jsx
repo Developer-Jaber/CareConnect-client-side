@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Card, Button, Progress } from 'antd'
 import { Link } from 'react-router-dom'
 import './PopularCamps.css'
-import { CalendarOutlined, EnvironmentOutlined, EyeOutlined, UserOutlined } from '@ant-design/icons'
+import {
+  CalendarOutlined,
+  EnvironmentOutlined,
+  EyeOutlined,
+  UserOutlined
+} from '@ant-design/icons'
 
 const { Meta } = Card
 
@@ -90,11 +95,11 @@ const PopularCamps = () => {
                 <img
                   alt={camp.name}
                   src={camp.image}
-                  className='w-full h-48 md:h-56 object-cover'
+                  className='bg-[#D4EBD3] w-full h-48 md:h-56 object-cover'
                 />
               }
               styles={{
-                body: { padding: '16px 20px', background: 'var(--background)' }
+                body: { padding: '16px 20px' }
               }}
             >
               <Meta
@@ -140,8 +145,8 @@ const PopularCamps = () => {
 
               {/* CTA Button with hover effect */}
               <Link to={`/camp-details/${camp._id}`}>
-                <button className='flex justify-center items-center gap-2 bg-[var(--primary)] hover:bg-[var(--accent)] mt-4 py-2 rounded-lg w-full font-bold text-white transition-all duration-300'>
-                  <EyeOutlined /> View Details
+                <button className='flex justify-center items-center gap-2 bg-[#2fbc2f] hover:bg-[var(--accent)] mt-4 py-3 rounded-lg w-full font-bold text-[#090109] transition-all duration-300'>
+                  View Details
                 </button>
               </Link>
             </Card>
@@ -150,10 +155,16 @@ const PopularCamps = () => {
 
         {/* See All Camps Button */}
         <div className='mt-10 text-center'>
-          <Link to='/available-camps-page'>
+          {/* <Link to='/available-camps-page'>
             <button className='bg-[#42bb76] hover:bg-[#b8c7bf] md:mt-10 px-6 rounded-lg font-semibold text-gray-200 hover:text-gray-600 md:text-xl btn'>
               See All Camps
             </button>
+          </Link> */}
+          <Link
+            to='/available-camps-page'
+            className='bg-[#FBE2B4] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-xl btn btn-primary'
+          >
+           See All Camps
           </Link>
         </div>
       </div>

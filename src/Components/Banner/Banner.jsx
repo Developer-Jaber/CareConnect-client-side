@@ -23,9 +23,15 @@ const Banner = () => {
           </p>
           <Link
             to='/available-camps-page'
-            className='bg-[#2fbc2f] hover:bg-[#b8c7bf] mt-6 border-none text-[0.75rem] text-white md:text-xl btn btn-primary'
+            className='bg-[#2fbc2f] hover:bg-[#b8c7bf] mt-2 mr-5 border-none text-[#090109] md:text-xl btn btn-primary'
           >
             Explore Camps
+          </Link>
+          <Link
+            to='/be-an-organizer'
+            className='bg-[#FBE2B4] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-xl btn btn-primary'
+          >
+            Be an Organizer
           </Link>
         </div>
       </div>

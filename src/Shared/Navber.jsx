@@ -140,7 +140,7 @@ const Navber = () => {
         ) : (
           <Link
             to='/join-us'
-            className='hidden md:flex items-center bg-[#2fbc2f] hover:bg-[#72f4aa] font-semibold text-gray-200 hover:text-white md:text-lg btn'
+            className='hidden md:flex items-center bg-[#2fbc2f] hover:bg-[#72f4aa] text-[#090109] hover:text-white md:text-lg btn'
           >
             Join Us
           </Link>
