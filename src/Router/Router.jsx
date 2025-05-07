@@ -18,6 +18,7 @@ import PaymentHistory from '../Pages/Dashboard/Participent/PaymentHistory'
 import DashbordMain from '../Layout/DashbordMain'
 import SuccessStorySubmission from '../Pages/Dashboard/Participent/SuccessStorySubmission'
 import AboutUsPage from '../Pages/AboutUsPage/AboutUsPage'
+import ContactUsPage from '../Pages/ContactUsPage/ContactUsPage'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/about-us',
         element: <AboutUsPage></AboutUsPage>
+      },
+      {
+        path: '/contact-us',
+        element: <ContactUsPage></ContactUsPage>
       },
       {
         path: '/join-us',
