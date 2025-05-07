@@ -17,6 +17,7 @@ import RegisteredCamps from '../Pages/Dashboard/Participent/RegisteredCamps'
 import PaymentHistory from '../Pages/Dashboard/Participent/PaymentHistory'
 import DashbordMain from '../Layout/DashbordMain'
 import SuccessStorySubmission from '../Pages/Dashboard/Participent/SuccessStorySubmission'
+import AboutUsPage from '../Pages/AboutUsPage/AboutUsPage'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: '/available-camps-page',
         element: <AvailableCampsPage></AvailableCampsPage>
+      },
+      {
+        path: '/about-us',
+        element: <AboutUsPage></AboutUsPage>
       },
       {
         path: '/join-us',

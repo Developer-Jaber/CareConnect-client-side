@@ -59,11 +59,11 @@ const FAQSection = () => {
             <Panel 
               key={index} 
               header={
-                <div className="font-medium text-[var(--text)] text-lg">
+                <div className="font-medium text-[var(--text)] text-2xl">
                   {faq.question}
                 </div>
               }
-              extra={<Tag className="bg-[var(--secondary)]">{faq.category}</Tag>}
+              extra={<Tag className="bg-[var(--secondary)] p-2 text-lg">{faq.category}</Tag>}
               className="bg-white shadow-sm hover:shadow-md mb-4 border-0 rounded-lg transition-all"
             >
               <Divider className="bg-[var(--secondary)] my-3" />
