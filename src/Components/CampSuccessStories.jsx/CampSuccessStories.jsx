@@ -13,12 +13,12 @@ const CampSuccessStories = () => {
   }, [])
 
   return (
-    <div className='py-28 min-h-screen'>
-      <div className='my-16 text-center'>
-        <h1 className='font-bold text-[#1A8A83] text-3xl md:text-4xl lg:text-5xl'>
+    <div className='py-20 smin-h-screen'>
+      <div className='my-10 text-center'>
+        <h1 className='font-bold text-[var(--text)] text-3xl md:text-4xl lg:text-5xl'>
           Camp Success Stories
         </h1>
-        <p className='mt-4 text-gray-600 text-lg md:text-xl'>
+        <p className='mt-4 text-[var(--text)] text-lg md:text-xl'>
           Hear inspiring stories and real experiences from participants who made
           a difference through our medical camps.
         </p>

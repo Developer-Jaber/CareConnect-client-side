@@ -1,7 +1,9 @@
 import Banner from "../../Components/Banner/Banner";
 import CampSuccessStories from "../../Components/CampSuccessStories.jsx/CampSuccessStories";
+import FAQSection from "../../Components/FAQSection/FAQSection";
 import FeedbackAndRatings from "../../Components/FeedbackAndRatings/FeedbackAndRatings";
 import PopularCamps from "../../Components/PopularCamps/PopularCamps";
+import ProfessionalsSection from "../../Components/ProfessionalsSection/ProfessionalsSection";
 
 const Home = () => {
     return (
@@ -17,6 +19,12 @@ const Home = () => {
             </section>
             <section>
                 <CampSuccessStories></CampSuccessStories>
+            </section>
+            <section>
+                <ProfessionalsSection></ProfessionalsSection>
+            </section>
+            <section>
+                <FAQSection></FAQSection>
             </section>
         </div>
     );

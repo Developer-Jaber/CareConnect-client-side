@@ -29,7 +29,7 @@ const Banner = () => {
           </Link>
           <Link
             to='/be-an-organizer'
-            className='bg-[#FBE2B4] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-xl btn btn-primary'
+            className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-xl btn btn-primary'
           >
             Be an Organizer
           </Link>

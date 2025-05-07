@@ -6,7 +6,18 @@
 :root {
     --text: #090109;
     --background: #fef6fd;
-    --primary: #78d076;
-    --secondary: #f3d381;
-    --accent: #61ba07;
+    --primary: #2fbc2f;
+    --secondary: #FBE2B4;
+    --accent: #61bb07;
   }
+
+  /* Custom collapse animation */
+.ant-collapse-content {
+  transition: all 0.3s ease-out !important;
+}
+
+/* Hover effect on panels */
+.ant-collapse > .ant-collapse-item:hover {
+  transform: translateX(5px);
+  transition: transform 0.2s;
+}

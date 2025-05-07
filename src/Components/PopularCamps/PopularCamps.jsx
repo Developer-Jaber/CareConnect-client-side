@@ -162,7 +162,7 @@ const PopularCamps = () => {
           </Link> */}
           <Link
             to='/available-camps-page'
-            className='bg-[#FBE2B4] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-xl btn btn-primary'
+            className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-xl btn btn-primary'
           >
            See All Camps
           </Link>
