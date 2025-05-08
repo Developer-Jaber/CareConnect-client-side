@@ -101,11 +101,11 @@ const ContactUsPage = () => {
 
               <Form.Item>
                 <Button 
-                  type="primary" 
+                  type="secondary" 
                   htmlType="submit" 
                   size="large"
                   loading={isSubmitting}
-                  className="bg-[var(--primary)] hover:bg-[var(--accent)] rounded-lg w-full h-12"
+                  className="bg-[var(--secondary)] hover:bg-[var(--accent)] rounded-lg w-full h-12"
                 >
                   Send Message
                 </Button>

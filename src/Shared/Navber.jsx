@@ -40,7 +40,7 @@ const Navber = () => {
         <Link to='/contact-us'>Contact</Link>
       </li>
       <li>
-        <Link to='/'>Blogs</Link>
+        <Link to='/blogs'>Blogs</Link>
       </li>
       <li className='md:hidden bg-[#2fbc2f] hover:bg-[#72f4aa] rounded-md font-semibold text-gray-200 hover:text-white text-start'>
         <Link to='/join-us'>Join Us</Link>

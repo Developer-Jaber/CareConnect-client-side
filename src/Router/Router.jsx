@@ -19,6 +19,7 @@ import DashbordMain from '../Layout/DashbordMain'
 import SuccessStorySubmission from '../Pages/Dashboard/Participent/SuccessStorySubmission'
 import AboutUsPage from '../Pages/AboutUsPage/AboutUsPage'
 import ContactUsPage from '../Pages/ContactUsPage/ContactUsPage'
+import BlogPage from '../Pages/BlogPage/BlogPage'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/contact-us',
         element: <ContactUsPage></ContactUsPage>
+      },
+      {
+        path: '/blogs',
+        element: <BlogPage></BlogPage>
       },
       {
         path: '/join-us',
