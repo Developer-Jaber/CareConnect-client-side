@@ -29,3 +29,181 @@
     background-color: #15508c;
   }
   
+  .available-camps-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  
+  .page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text);
+    opacity: 0.8;
+  }
+  
+  .search-filter-section {
+    margin-bottom: 30px;
+  }
+  
+  .search-bar {
+    margin-bottom: 20px;
+  }
+  
+  .camp-card {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .camp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  .camp-image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .camp-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  
+  .camp-card:hover .camp-image {
+    transform: scale(1.05);
+  }
+  
+  .new-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+  }
+  
+  .free-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+  }
+  
+  .camp-content {
+    padding: 16px;
+  }
+  
+  .camp-header {
+    margin-bottom: 12px;
+  }
+  
+  .camp-title {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--text);
+  }
+  
+  .camp-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  
+  .camp-meta {
+    margin: 15px 0;
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  
+  .camp-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .fee-amount {
+    font-weight: bold;
+    color: var(--primary);
+  }
+  
+  .free-text {
+    font-weight: bold;
+    color: var(--accent);
+  }
+  
+  .details-button {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  .details-button:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  
+  .loading-state, .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 20px;
+  }
+  
+  .subscription-section {
+    margin-top: 50px;
+    padding: 30px;
+    background: rgba(var(--primary), 0.05);
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .subscription-section h3 {
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  
+  .subscription-form {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2rem;
+    }
+    
+    .subscription-form {
+      flex-direction: column;
+    }
+  }
