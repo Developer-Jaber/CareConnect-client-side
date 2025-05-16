@@ -28,7 +28,7 @@ const Banner = () => {
             Explore Camps
           </Link>
           <Link
-            to='/be-an-organizer'
+            to='/organizer-registration'
             className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-xl btn btn-primary'
           >
             Be an Organizer

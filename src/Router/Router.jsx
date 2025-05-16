@@ -20,6 +20,7 @@ import SuccessStorySubmission from '../Pages/Dashboard/Participent/SuccessStoryS
 import AboutUsPage from '../Pages/AboutUsPage/AboutUsPage'
 import ContactUsPage from '../Pages/ContactUsPage/ContactUsPage'
 import BlogPage from '../Pages/BlogPage/BlogPage'
+import OrganizerRegistrationPage from '../Pages/OrganizerRegistrationPage/OrganizerRegistrationPage'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/available-camps-page',
         element: <AvailableCampsPage></AvailableCampsPage>
+      },
+      {
+        path: '/organizer-registration',
+        element: <OrganizerRegistrationPage></OrganizerRegistrationPage>
       },
       {
         path: '/about-us',
