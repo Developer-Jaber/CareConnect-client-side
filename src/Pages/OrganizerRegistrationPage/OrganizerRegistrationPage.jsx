@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Steps, Form, Input, Select, Upload, Button, message, Card, Typography } from 'antd';
-import { UserOutlined, SolutionOutlined, BankOutlined, FileDoneOutlined } from '@ant-design/icons';
+import { Steps, Form, Input, Select, Upload, Button, message, Card, Typography, InputNumber, Divider, Checkbox } from 'antd';
+import { UserOutlined, SolutionOutlined, BankOutlined, FileDoneOutlined, UploadOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 const { Step } = Steps;
