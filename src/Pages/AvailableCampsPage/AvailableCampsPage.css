@@ -108,7 +108,7 @@
   }
   
   .camp-content {
-    padding: 16px;
+    padding: 0px;
   }
   
   .camp-header {
@@ -159,16 +159,7 @@
     color: var(--accent);
   }
   
-  .details-button {
-    background: var(--primary);
-    border-color: var(--primary);
-  }
-  
-  .details-button:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-  }
-  
+
   .loading-state, .empty-state {
     display: flex;
     flex-direction: column;
@@ -179,7 +170,6 @@
   }
   
   .subscription-section {
-    margin-top: 50px;
     padding: 30px;
     background: rgba(var(--primary), 0.05);
     border-radius: 10px;

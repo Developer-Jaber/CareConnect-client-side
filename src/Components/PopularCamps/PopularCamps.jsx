@@ -155,11 +155,6 @@ const PopularCamps = () => {
 
         {/* See All Camps Button */}
         <div className='mt-10 text-center'>
-          {/* <Link to='/available-camps-page'>
-            <button className='bg-[#42bb76] hover:bg-[#b8c7bf] md:mt-10 px-6 rounded-lg font-semibold text-gray-200 hover:text-gray-600 md:text-xl btn'>
-              See All Camps
-            </button>
-          </Link> */}
           <Link
             to='/available-camps-page'
             className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-xl btn btn-primary'

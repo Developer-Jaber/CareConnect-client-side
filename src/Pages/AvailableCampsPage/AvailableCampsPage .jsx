@@ -90,13 +90,13 @@ const AvailableCampsPage = () => {
   return (
     <div className="available-camps-page">
       {/* Page Header */}
-      <div className="page-header">
+      <div className="my-20 page-header">
         <h1 className="page-title">Available Medical Camps</h1>
-        <p className="page-subtitle">Find and join health camps in your area</p>
+        <p className="text-[1rem] md:text-xl">Find and join health camps in your area</p>
       </div>
 
       {/* Search and Filter Section */}
-      <div className="search-filter-section">
+      <div className="search-filter-section mt-20">
         <div className="search-bar">
           <Input
             prefix={<SearchOutlined />}
@@ -265,9 +265,9 @@ const AvailableCampsPage = () => {
                       )}
                     </div>
                     <Link to={`/camp-details/${camp._id}`}>
-                      <Button type="primary" block className="details-button">
+                      <button className="flex justify-center items-center gap-2 bg-[#2fbc2f] hover:bg-[var(--accent)] mt-4 py-2 rounded-lg w-full font-bold text-[#090109] transition-all duration-300">
                         View Details
-                      </Button>
+                      </button>
                     </Link>
                   </div>
                 </div>
@@ -278,15 +278,15 @@ const AvailableCampsPage = () => {
       )}
 
       {/* Email Subscription */}
-      <div className="subscription-section">
-        <h3>Want updates on new camps in your area?</h3>
+      <div className="my-32 subscription-section">
+        <h3 className='text-[1rem] md:text-xl'>Want updates on new camps in your area?</h3>
         <div className="subscription-form">
           <Input 
             placeholder="Enter your email" 
             size="large"
             style={{ flex: 1 }}
           />
-          <Button type="primary" size="large">
+          <Button className='bg-[var(--secondary)] hover:bg-[var(--accent)] hover:border-none rounded-lg h-12' size="large">
             Subscribe
           </Button>
         </div>
