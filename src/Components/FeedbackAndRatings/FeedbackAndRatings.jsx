@@ -19,7 +19,7 @@ const FeedbackAndRatings = () => {
       
       <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {feedbackData.map((item) => (
-          <Card
+           <Card
             key={item.id}
             className="shadow-lg hover:shadow-xl border-0 transition-all duration-300"
             bodyStyle={{ padding: '16px' }}
