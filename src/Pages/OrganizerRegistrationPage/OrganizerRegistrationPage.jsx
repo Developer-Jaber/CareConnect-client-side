@@ -1,287 +1,261 @@
-import { useState } from 'react';
-import { Steps, Form, Input, Select, Upload, Button, message, Card, Typography, InputNumber, Divider, Checkbox } from 'antd';
-import { UserOutlined, SolutionOutlined, BankOutlined, FileDoneOutlined, UploadOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import {
+  Container,
+  Card,
+  CardHeader,
+  CardContent,
+  Typography,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  Button,
+  CircularProgress,
+  Alert,
+  Link,
+  Box,
+  styled
+} from '@mui/material';
 
-const { Step } = Steps;
-const { Option } = Select;
-const { Title, Text } = Typography;
+// Form validation schema
+const formSchema = z.object({
+  fullName: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  organization: z.string().min(2, "Organization name is required"),
+  organizationType: z.enum(["non-profit", "community", "educational", "other"]),
+  description: z.string().min(20, "Please provide more details"),
+  website: z.string().url("Invalid URL").or(z.literal("")),
+  terms: z.literal(true, {
+    errorMap: () => ({ message: "You must accept the terms" }),
+  }),
+});
 
-const OrganizerRegistrationPage = () => {
-  const [current, setCurrent] = useState(0);
-  const [form] = Form.useForm();
+// Styled components using MUI's modern styling system
+const StyledCard = styled(Card)(({ theme }) => ({
+  padding: theme.spacing(4),
+  borderRadius: 12,
+  boxShadow: '0 8px 16px rgba(0,0,0,0.1)',
+  marginTop: theme.spacing(4),
+  marginBottom: theme.spacing(4),
+}));
 
-  const steps = [
-    {
-      title: 'Personal Info',
-      icon: <UserOutlined />,
-      content: <PersonalInfoForm form={form} />
+const SubmitButton = styled(Button)(({ theme }) => ({
+  marginTop: theme.spacing(3),
+  padding: theme.spacing(1.5),
+}));
+
+export default function OrganizerRegistration() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      organizationType: "non-profit",
     },
-    {
-      title: 'Organization',
-      icon: <BankOutlined />,
-      content: <OrganizationForm form={form} />
-    },
-    {
-      title: 'Camp Proposal',
-      icon: <SolutionOutlined />,
-      content: <CampProposalForm form={form} />
-    },
-    {
-      title: 'Verification',
-      icon: <FileDoneOutlined />,
-      content: <VerificationStep form={form} />
-    }
-  ];
+  });
 
-  const next = () => {
-    form.validateFields()
-      .then(() => setCurrent(current + 1))
-      .catch(err => console.log('Validation Failed:', err));
-  };
-
-  const prev = () => setCurrent(current - 1);
-
-  const handleSubmit = async () => {
+  const onSubmit = async (data) => {
     try {
-      const values = await form.validateFields();
-      const response = await fetch('/api/organizers/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values)
-      });
-
-      if (response.ok) {
-        message.success('Application submitted successfully!');
-        // Redirect to dashboard or confirmation page
-      } else {
-        throw new Error('Submission failed');
-      }
+      setIsSubmitting(true);
+      setSubmitError(null);
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setSubmitSuccess(true);
+      reset();
     } catch (error) {
-      message.error('Submission failed. Please try again.');
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="mx-auto px-4 py-8 max-w-4xl container">
-      <Card className="shadow-lg">
-        <Title level={2} className="mb-6 text-center">
-          Become a Medical Camp Organizer
-        </Title>
-        <Steps current={current} className="mb-8">
-          {steps.map(item => (
-            <Step key={item.title} title={item.title} icon={item.icon} />
-          ))}
-        </Steps>
-        
-        <div className="min-h-[300px] steps-content">
-          {steps[current].content}
-        </div>
-        
-        <div className="flex justify-between mt-8 steps-action">
-          {current > 0 && (
-            <Button onClick={prev}>
-              Back
-            </Button>
+    <Container maxWidth="md">
+      <StyledCard>
+        <CardHeader
+          title={
+            <Typography variant="h4" component="h1" align="center">
+              Become an Organizer
+            </Typography>
+          }
+          subheader={
+            <Typography color="textSecondary" align="center">
+              Register your organization to post volunteer opportunities
+            </Typography>
+          }
+        />
+
+        <CardContent>
+          {submitSuccess && (
+            <Alert severity="success" onClose={() => setSubmitSuccess(false)} sx={{ mb: 3 }}>
+              Registration successful! We've received your organizer application.
+            </Alert>
           )}
-          {current < steps.length - 1 ? (
-            <Button type="primary" onClick={next}>
-              Next
-            </Button>
-          ) : (
-            <Button type="primary" onClick={handleSubmit}>
-              Submit Application
-            </Button>
+
+          {submitError && (
+            <Alert severity="error" onClose={() => setSubmitError(null)} sx={{ mb: 3 }}>
+              {submitError}
+            </Alert>
           )}
-        </div>
-      </Card>
-      
-      <Text className="block mt-6 text-center">
-        Already have an organizer account? <Link to="/login">Log in here</Link>
-      </Text>
-    </div>
+
+          <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
+            <Box sx={{ mb: 2 }}>
+              <TextField
+                {...register('fullName')}
+                label="Full Name"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                error={!!errors.fullName}
+                helperText={errors.fullName?.message}
+              />
+
+              <TextField
+                {...register('email')}
+                label="Email"
+                type="email"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                error={!!errors.email}
+                helperText={errors.email?.message}
+              />
+            </Box>
+
+            <Box sx={{ mb: 2 }}>
+              <TextField
+                {...register('phone')}
+                label="Phone Number"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                error={!!errors.phone}
+                helperText={errors.phone?.message}
+              />
+
+              <TextField
+                {...register('organization')}
+                label="Organization Name"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                error={!!errors.organization}
+                helperText={errors.organization?.message}
+              />
+            </Box>
+
+            <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
+              Organization Type
+            </Typography>
+            <RadioGroup
+              {...register('organizationType')}
+              defaultValue="non-profit"
+              sx={{ mb: 2 }}
+            >
+              <FormControlLabel
+                value="non-profit"
+                control={<Radio />}
+                label="Non-Profit Organization"
+              />
+              <FormControlLabel
+                value="community"
+                control={<Radio />}
+                label="Community Group"
+              />
+              <FormControlLabel
+                value="educational"
+                control={<Radio />}
+                label="Educational Institution"
+              />
+              <FormControlLabel
+                value="other"
+                control={<Radio />}
+                label="Other"
+              />
+            </RadioGroup>
+            {errors.organizationType && (
+              <Typography color="error" variant="caption">
+                {errors.organizationType.message}
+              </Typography>
+            )}
+
+            <TextField
+              {...register('description')}
+              label="Organization Description"
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={4}
+              margin="normal"
+              error={!!errors.description}
+              helperText={errors.description?.message}
+              placeholder="Tell us about your organization and the type of volunteer opportunities you want to post..."
+            />
+
+            <TextField
+              {...register('website')}
+              label="Website (Optional)"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              error={!!errors.website}
+              helperText={errors.website?.message}
+            />
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  {...register('terms')}
+                  color="primary"
+                />
+              }
+              label={
+                <Typography>
+                  I agree to the{' '}
+                  <Link href="#" underline="hover">
+                    Terms and Conditions
+                  </Link>
+                </Typography>
+              }
+              sx={{ mt: 2, mb: 2 }}
+            />
+            {errors.terms && (
+              <Typography color="error" variant="caption" display="block">
+                {errors.terms.message}
+              </Typography>
+            )}
+
+            <button
+              type="submit"
+              variant="contained"
+              className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none w-full text-[#090109] md:text-xl btn btn-primary'
+              size="large"
+              disabled={isSubmitting}
+              startIcon={
+                isSubmitting ? (
+                  <CircularProgress size={20} color="inherit" />
+                ) : null
+              }
+            >
+              {isSubmitting ? 'Processing...' : 'Submit Application'}
+            </button>
+          </Box>
+        </CardContent>
+      </StyledCard>
+    </Container>
   );
-};
-
-// Form Components
-const PersonalInfoForm = ({ form }) => (
-  <Form form={form} layout="vertical" name="personal_info">
-    <Form.Item
-      name="fullName"
-      label="Full Name"
-      rules={[{ required: true, message: 'Please input your name!' }]}
-    >
-      <Input placeholder="Dr. Ayesha Rahman" />
-    </Form.Item>
-
-    <Form.Item
-      name="email"
-      label="Email"
-      rules={[
-        { required: true, message: 'Please input your email!' },
-        { type: 'email', message: 'Please enter a valid email' }
-      ]}
-    >
-      <Input placeholder="example@domain.com" />
-    </Form.Item>
-
-    <Form.Item
-      name="phone"
-      label="Phone Number"
-      rules={[{ required: true, message: 'Please input your phone number!' }]}
-    >
-      <Input addonBefore="+880" placeholder="1XXXXXXXXX" />
-    </Form.Item>
-
-    <Form.Item
-      name="medicalLicense"
-      label="Medical License Number (if applicable)"
-    >
-      <Input placeholder="BMDC-12345" />
-    </Form.Item>
-  </Form>
-);
-
-const OrganizationForm = ({ form }) => (
-  <Form form={form} layout="vertical" name="organization">
-    <Form.Item
-      name="orgType"
-      label="Organization Type"
-      rules={[{ required: true }]}
-    >
-      <Select placeholder="Select type">
-        <Option value="hospital">Hospital/Clinic</Option>
-        <Option value="ngo">NGO</Option>
-        <Option value="government">Government Body</Option>
-        <Option value="individual">Individual</Option>
-      </Select>
-    </Form.Item>
-
-    <Form.Item
-      noStyle
-      shouldUpdate={(prev, current) => prev.orgType !== current.orgType}
-    >
-      {({ getFieldValue }) => 
-        getFieldValue('orgType') !== 'individual' ? (
-          <Form.Item
-            name="orgName"
-            label="Organization Name"
-            rules={[{ required: true }]}
-          >
-            <Input />
-          </Form.Item>
-        ) : null
-      }
-    </Form.Item>
-
-    <Form.Item
-      name="orgDocuments"
-      label="Registration Documents"
-      valuePropName="fileList"
-      getValueFromEvent={e => e.fileList}
-    >
-      <Upload 
-        action="/api/upload" 
-        listType="picture"
-        accept=".pdf,.jpg,.png"
-        beforeUpload={() => false} // Prevent automatic upload
-      >
-        <Button icon={<UploadOutlined />}>Select Files</Button>
-      </Upload>
-    </Form.Item>
-  </Form>
-);
-
-const CampProposalForm = ({ form }) => (
-  <Form form={form} layout="vertical" name="camp_proposal">
-    <Form.Item
-      name="campName"
-      label="Proposed Camp Name"
-      rules={[{ required: true }]}
-    >
-      <Input placeholder="Free Diabetes Screening Camp" />
-    </Form.Item>
-
-    <Form.Item
-      name="campType"
-      label="Camp Specialty"
-      rules={[{ required: true }]}
-    >
-      <Select mode="multiple" placeholder="Select specialties">
-        <Option value="general">General Health Checkup</Option>
-        <Option value="vaccination">Vaccination</Option>
-        <Option value="dental">Dental Care</Option>
-        <Option value="eye">Eye Care</Option>
-      </Select>
-    </Form.Item>
-
-    <Form.Item
-      name="targetParticipants"
-      label="Expected Participants"
-      rules={[{ required: true }]}
-    >
-      <InputNumber min={50} max={5000} style={{ width: '100%' }} />
-    </Form.Item>
-
-    <Form.Item
-      name="proposalDoc"
-      label="Detailed Proposal (PDF)"
-      rules={[{ required: true }]}
-      valuePropName="fileList"
-      getValueFromEvent={e => e.fileList}
-    >
-      <Upload accept=".pdf" maxCount={1} beforeUpload={() => false}>
-        <Button icon={<UploadOutlined />}>Upload Proposal</Button>
-      </Upload>
-    </Form.Item>
-  </Form>
-);
-
-const VerificationStep = ({ form }) => {
-  const values = form.getFieldsValue();
-  
-  return (
-    <div className="verification-summary">
-      <Title level={4} className="mb-4">Please verify your information:</Title>
-      
-      <div className="space-y-4">
-        <div>
-          <Text strong>Personal Information:</Text>
-          <p>{values.fullName}</p>
-          <p>{values.email}</p>
-          <p>+880{values.phone}</p>
-          {values.medicalLicense && <p>License: {values.medicalLicense}</p>}
-        </div>
-        
-        <Divider />
-        
-        <div>
-          <Text strong>Organization:</Text>
-          <p>{values.orgType === 'individual' ? 'Individual' : values.orgName}</p>
-        </div>
-        
-        <Divider />
-        
-        <div>
-          <Text strong>Camp Proposal:</Text>
-          <p>Name: {values.campName}</p>
-          <p>Specialties: {values.campType?.join(', ')}</p>
-          <p>Expected Participants: {values.targetParticipants}</p>
-        </div>
-      </div>
-
-      <Form.Item
-        name="agreement"
-        valuePropName="checked"
-        rules={[{ required: true, message: 'You must agree to the terms' }]}
-        className="mt-6"
-      >
-        <Checkbox>
-          I agree to the <a href="/terms" target="_blank">Terms of Service</a> and confirm all information is accurate
-        </Checkbox>
-      </Form.Item>
-    </div>
-  );
-};
-
-export default OrganizerRegistrationPage;
+}
