@@ -1,6 +1,6 @@
 # 🏥 MedCamp Connect - Medical Camp Management System
 
-![Project Banner](https://i.ibb.co/4Y3Xz7k/medcamp-preview.png)
+![Project Banner](https://i.ibb.co/0VpQTwbm/Screenshot-2025-05-18-235414.png)
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-2fbc2f?style=for-the-badge&logo=firefox&logoColor=white)](https://medcamp-connect.web.app)
 [![GitHub Stars](https://img.shields.io/github/stars/yourusername/medcamp-management?style=for-the-badge)](https://github.com/yourusername/medcamp-management/stargazers)
