@@ -59,4 +59,4 @@ A comprehensive platform that revolutionizes medical camp organization by connec
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/medcamp-management.git
+   git clone https://github.com/Developer-Jaber/CareConnect-client-side.git
