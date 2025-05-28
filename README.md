@@ -1,4 +1,4 @@
-# 🏥 MedCamp Connect - Medical Camp Management System
+# 🏥 CareConnect Camp - Medical Camp Management System
 
 ![Project Banner](https://i.ibb.co/0VpQTwbm/Screenshot-2025-05-18-235414.png)
 
