@@ -46,11 +46,7 @@ A comprehensive platform that revolutionizes medical camp organization by connec
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
 ![Twilio](https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=twilio&logoColor=white)
 
-## 📸 Screenshots
 
-| Dashboard | Camp Management | Patient Registration |
-|-----------|-----------------|----------------------|
-| ![Dashboard](https://i.ibb.co/0jQY0Lk/dashboard.png) | ![Camp Management](https://i.ibb.co/7YfG3kY/camp-management.png) | ![Registration](https://i.ibb.co/8X9qK2Y/registration.png) |
 
 ## 🚀 Getting Started
 
