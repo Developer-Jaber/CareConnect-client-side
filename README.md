@@ -3,7 +3,7 @@
 ![Project Banner](https://i.ibb.co/0VpQTwbm/Screenshot-2025-05-18-235414.png)
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-2fbc2f?style=for-the-badge&logo=firefox&logoColor=white)](https://careconnect-camp.web.app/)
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/medcamp-management?style=for-the-badge)](https://github.com/yourusername/medcamp-management/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/yourusername/medcamp-management?style=for-the-badge)](https://github.com/Developer-Jaber/medcamp-management/stargazers)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 A comprehensive platform that revolutionizes medical camp organization by connecting healthcare providers, volunteers, and patients through smart scheduling, real-time tracking, and automated reporting.
