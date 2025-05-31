@@ -41,8 +41,8 @@ const Dashboard = () => {
                 <NavLink
                   to='/dashboard/organizer-profile'
                   className={({ isActive }) =>
-                    `flex items-center gap-3 py-3 px-5 rounded hover:bg-gray-500 ${
-                      isActive ? 'bg-gray-500' : ''
+                    `flex items-center gap-3 py-2 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                      isActive ? 'bg-[var(--secondary)]' : ''
                     }`
                   }
                 >
@@ -72,8 +72,8 @@ const Dashboard = () => {
                 <NavLink
                   to='/dashboard/add-camp'
                   className={({ isActive }) =>
-                    `flex items-center gap-2 py-2 mt-10 px-4 rounded hover:bg-gray-500 ${
-                      isActive ? 'bg-gray-500' : ''
+                    `flex items-center gap-3 mt-16 py-2 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                      isActive ? 'bg-[var(--secondary)]' : ''
                     }`
                   }
                 >
@@ -90,29 +90,51 @@ const Dashboard = () => {
                     />
                   </svg>
 
-                  <span>Add A Camp</span>
+                  <span className='font-semibold text-[1rem]'>Add A Camp</span>
                 </NavLink>
                 <NavLink
                   to='/dashboard/manage-camps'
                   className={({ isActive }) =>
-                    `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
-                      isActive ? 'bg-gray-500' : ''
+                    `flex items-center gap-3 mt-4 py-3 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                      isActive ? 'bg-[var(--secondary)]' : ''
                     }`
                   }
                 >
-                  <MdManageHistory className='text-[1.5rem] text-[var(--accent)]'></MdManageHistory>
-                  <span>Manage Camps</span>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='25'
+                    height='25'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    stroke-width='2'
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    class='icon-tabler icon-tabler-settings-pin icons-tabler-outline text-[1.5rem] text-[var(--accent)] icon'
+                  >
+                    <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                    <path d='M12.578 20.905c-.88 .299 -1.983 -.109 -2.253 -1.222a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c.574 .14 .96 .5 1.16 .937' />
+                    <path d='M14.99 12.256a3 3 0 1 0 -2.33 2.671' />
+                    <path d='M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879z' />
+                    <path d='M19 18v.01' />
+                  </svg>
+                  <span className='font-semibold text-[1rem]'>
+                    Manage Camps
+                  </span>
                 </NavLink>
                 <NavLink
                   to='/dashboard/manage-registered-camps'
                   className={({ isActive }) =>
-                    `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
-                      isActive ? 'bg-gray-500' : ''
+                    `flex items-center gap-3 mt-4 py-1 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                      isActive ? 'bg-[var(--secondary)]' : ''
                     }`
                   }
                 >
-                  <MdManageHistory className='text-[1.5rem] text-[var(--accent)]'></MdManageHistory>
-                  <span> Manage Registered Camps</span>
+                  <MdManageHistory className='text-[1.8rem] text-[var(--accent)]'></MdManageHistory>
+                  <span className='font-semibold text-[1rem]'>
+                    {' '}
+                    Manage Registered Camps
+                  </span>
                 </NavLink>
               </nav>
             </>
@@ -122,8 +144,8 @@ const Dashboard = () => {
                 <NavLink
                   to='/dashboard/organizer-profile'
                   className={({ isActive }) =>
-                    `flex items-center gap-3 py-3 px-5 rounded hover:bg-gray-500 ${
-                      isActive ? 'bg-gray-500' : ''
+                    `flex items-center gap-3 py-2 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                      isActive ? 'bg-[var(--secondary)]' : ''
                     }`
                   }
                 >
@@ -151,47 +173,53 @@ const Dashboard = () => {
                 <NavLink
                   to='/dashboard/analytics'
                   className={({ isActive }) =>
-                    `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
-                      isActive ? 'bg-gray-500' : ''
+                    `flex items-center mt-16 gap-3 py-2 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                      isActive ? 'bg-[var(--secondary)]' : ''
                     }`
                   }
                 >
                   <IoAnalytics className='text-[1.5rem] text-[var(--accent)]'></IoAnalytics>
-                  <span>Analytics</span>
+                  <span className='font-semibold text-[1rem]'>Analytics</span>
                 </NavLink>
 
                 <NavLink
                   to='/dashboard/registered-camps'
                   className={({ isActive }) =>
-                    `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
-                      isActive ? 'bg-gray-500' : ''
+                    `flex items-center mt-4 gap-3 py-2 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                      isActive ? 'bg-[var(--secondary)]' : ''
                     }`
                   }
                 >
                   <MdAppRegistration className='text-[1.5rem] text-[var(--accent)]'></MdAppRegistration>
-                  <span>Registered Camps</span>
+                  <span className='font-semibold text-[1rem]'>
+                    Registered Camps
+                  </span>
                 </NavLink>
                 <NavLink
                   to='/dashboard/pyment-history'
                   className={({ isActive }) =>
-                    `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
-                      isActive ? 'bg-gray-500' : ''
+                    `flex items-center mt-4 gap-3 py-2 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                      isActive ? 'bg-[var(--secondary)]' : ''
                     }`
                   }
                 >
                   <MdPayment className='text-[1.5rem] text-[var(--accent)]'></MdPayment>
-                  <span>Payment History</span>
+                  <span className='font-semibold text-[1rem]'>
+                    Payment History
+                  </span>
                 </NavLink>
                 <NavLink
                   to='/dashboard/success-story-submission'
                   className={({ isActive }) =>
-                    `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
-                      isActive ? 'bg-gray-500' : ''
+                    `flex items-center mt-4 gap-3 py-2 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                      isActive ? 'bg-[var(--secondary)]' : ''
                     }`
                   }
                 >
                   <SnippetsOutlined className='text-[1.5rem] text-[var(--accent)]'></SnippetsOutlined>
-                  <span>Write a Succes Story</span>
+                  <span className='font-semibold text-[1rem]'>
+                    Write a Succes Story
+                  </span>
                 </NavLink>
               </nav>
             </>
@@ -201,13 +229,30 @@ const Dashboard = () => {
             <NavLink
               to='/'
               className={({ isActive }) =>
-                `flex items-center gap-2 py-2 px-4 rounded hover:bg-gray-500 ${
-                  isActive ? 'bg-gray-500' : ''
+                `flex items-center mt-10 gap-3 py-2 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
+                  isActive ? 'bg-[var(--secondary)]' : ''
                 }`
               }
             >
-              <FaHome className='text-[1.5rem] text-[var(--accent)]'></FaHome>
-              <span>Home</span>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='25'
+                height='25'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='2'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                class='icon-tabler icon-tabler-home-up icons-tabler-outline text-[1.5rem] text-[var(--accent)] icon'
+              >
+                <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                <path d='M9 21v-6a2 2 0 0 1 2 -2h2c.641 0 1.212 .302 1.578 .771' />
+                <path d='M20.136 11.136l-8.136 -8.136l-9 9h2v7a2 2 0 0 0 2 2h6.344' />
+                <path d='M19 22v-6' />
+                <path d='M22 19l-3 -3l-3 3' />
+              </svg>
+              <span className='font-semibold text-[1rem]'>Home</span>
             </NavLink>
           </nav>
         </aside>
