@@ -1,19 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { 
-  Card, 
-  Row, 
-  Col, 
-  Statistic, 
-  Button, 
-  Badge, 
-  Avatar, 
+import React, { useContext, useEffect, useState } from 'react'
+import {
+  Card,
+  Row,
+  Col,
+  Statistic,
+  Button,
+  Badge,
+  Avatar,
   Tag,
   Divider,
   Steps,
   Table,
   Progress
-} from 'antd';
-import { 
+} from 'antd'
+import {
   CalendarOutlined,
   TeamOutlined,
   MedicineBoxOutlined,
@@ -24,17 +24,18 @@ import {
   PlusOutlined,
   UserOutlined,
   FileTextOutlined
-} from '@ant-design/icons';
-import { AuthContext } from '../Provider/AuthProvider';
-import { Bar, Pie, Line } from '@ant-design/charts';
+} from '@ant-design/icons'
+import { Bar, Pie, Line } from '@ant-design/charts'
+import { AuthContext } from '../Provider/AuthProvider'
 
-const { Step } = Steps;
 
-const DashboardMain = () => {
-  const { user } = useContext(AuthContext);
-  const [isOrganizer, setIsOrganizer] = useState(false);
-  const [loading, setLoading] = useState(true);
-  
+const { Step } = Steps
+
+const DashboardOverviwe = () => {
+  const { user } = useContext(AuthContext)
+  const [isOrganizer, setIsOrganizer] = useState(false)
+  const [loading, setLoading] = useState(true)
+
   // Mock data - replace with real API calls
   const stats = {
     totalCamps: 12,
@@ -54,35 +55,71 @@ const DashboardMain = () => {
       { type: 'Other', value: 5 }
     ],
     monthlyParticipants: [20, 50, 30, 80, 100, 150, 120]
-  };
+  }
 
   const upcomingCamps = [
-    { id: 1, name: 'Free Health Checkup', location: 'Dhaka', date: '2023-12-15', type: 'General', participants: 45 },
-    { id: 2, name: 'Vaccination Camp', location: 'Chittagong', date: '2023-12-20', type: 'Vaccine', participants: 32 },
-    { id: 3, name: 'Dental Care Camp', location: 'Sylhet', date: '2023-12-25', type: 'Dental', participants: 28 }
-  ];
+    {
+      id: 1,
+      name: 'Free Health Checkup',
+      location: 'Dhaka',
+      date: '2023-12-15',
+      type: 'General',
+      participants: 45
+    },
+    {
+      id: 2,
+      name: 'Vaccination Camp',
+      location: 'Chittagong',
+      date: '2023-12-20',
+      type: 'Vaccine',
+      participants: 32
+    },
+    {
+      id: 3,
+      name: 'Dental Care Camp',
+      location: 'Sylhet',
+      date: '2023-12-25',
+      type: 'Dental',
+      participants: 28
+    }
+  ]
 
   const notifications = [
     { id: 1, title: 'New camp approved', date: '2023-12-10', read: false },
-    { id: 2, title: '5 new participants registered', date: '2023-12-09', read: true }
-  ];
+    {
+      id: 2,
+      title: '5 new participants registered',
+      date: '2023-12-09',
+      read: true
+    }
+  ]
 
   useEffect(() => {
     // Simulate API loading
     const timer = setTimeout(() => {
-      setLoading(false);
-      // In real app, fetch user role here
-      setIsOrganizer(user?.email?.includes('org')); // Example logic
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [user]);
+      setLoading(false)
+      // Fetch user role from backend
+
+      const checkUserRole = async () => {
+        if (user?.email) {
+          const res = await fetch(
+            `https://b10a12-server-side-developer-jaber.vercel.app/users/${user.email}`
+          )
+          const data = await res.json()
+          setIsOrganizer(data.role === 'organizer')
+        }
+      }
+      checkUserRole()
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [user])
 
   if (loading) {
     return (
       <div style={{ padding: 24 }}>
-        <Progress percent={70} status="active" />
+        <Progress percent={70} status='active' />
       </div>
-    );
+    )
   }
 
   // Chart configurations
@@ -96,8 +133,8 @@ const DashboardMain = () => {
     colorField: 'name',
     height: 300,
     legend: false,
-    interactions: [{ type: 'element-active' }],
-  };
+    interactions: [{ type: 'element-active' }]
+  }
 
   const pieConfig = {
     data: stats.servicesDistribution,
@@ -110,8 +147,8 @@ const DashboardMain = () => {
       type: 'spider',
       content: '{name}\n{percentage}'
     },
-    interactions: [{ type: 'element-active' }],
-  };
+    interactions: [{ type: 'element-active' }]
+  }
 
   const lineConfig = {
     data: stats.monthlyParticipants.map((count, index) => ({
@@ -123,35 +160,39 @@ const DashboardMain = () => {
     height: 300,
     point: {
       size: 5,
-      shape: 'diamond',
+      shape: 'diamond'
     },
-    interactions: [{ type: 'element-active' }],
-  };
+    interactions: [{ type: 'element-active' }]
+  }
 
   return (
     <div style={{ padding: 24 }}>
       {/* Header Section */}
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        marginBottom: 24
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: 24
+        }}
+      >
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 8 }}>
             {isOrganizer ? 'Organizer Dashboard' : 'Participant Dashboard'}
           </h1>
-          <p style={{ color: '#666' }}>Welcome back, {user?.displayName || 'User'}!</p>
+          <p style={{ color: '#666' }}>
+            Welcome back, {user?.displayName || 'User'}!
+          </p>
         </div>
-        
+
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <Badge count={notifications.filter(n => !n.read).length}>
             <NotificationOutlined style={{ fontSize: 20, cursor: 'pointer' }} />
           </Badge>
-          <Avatar 
-            src={user?.photoURL} 
+          <Avatar
+            src={user?.photoURL}
             icon={<UserOutlined />}
-            style={{ backgroundColor: '#1890ff' }}
+            style={{ backgroundColor: 'var(--accent)' }}
           />
         </div>
       </div>
@@ -159,33 +200,33 @@ const DashboardMain = () => {
       {/* Stats Cards */}
       <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
         <Col xs={24} sm={12} md={6}>
-          <StatCard 
+          <StatCard
             icon={<CalendarOutlined style={{ color: '#1890ff' }} />}
-            title={isOrganizer ? "Your Camps" : "Joined Camps"}
+            title={isOrganizer ? 'Your Camps' : 'Joined Camps'}
             value={stats.totalCamps}
             change={stats.campChange}
           />
         </Col>
         <Col xs={24} sm={12} md={6}>
-          <StatCard 
+          <StatCard
             icon={<TeamOutlined style={{ color: '#52c41a' }} />}
-            title="Total Participants"
+            title='Total Participants'
             value={stats.totalParticipants}
             change={stats.participantChange}
           />
         </Col>
         <Col xs={24} sm={12} md={6}>
-          <StatCard 
+          <StatCard
             icon={<MedicineBoxOutlined style={{ color: '#f5222d' }} />}
-            title="Services Offered"
+            title='Services Offered'
             value={stats.totalServices}
             change={stats.serviceChange}
           />
         </Col>
         <Col xs={24} sm={12} md={6}>
-          <StatCard 
+          <StatCard
             icon={<StarOutlined style={{ color: '#faad14' }} />}
-            title="Average Rating"
+            title='Average Rating'
             value={stats.averageRating}
             isRating={true}
           />
@@ -196,21 +237,18 @@ const DashboardMain = () => {
       <Row gutter={[24, 24]}>
         {/* Charts Section */}
         <Col xs={24} lg={16}>
-          <Card 
-            title="Participation Overview" 
-            style={{ marginBottom: 24 }}
-          >
+          <Card title='Participation Overview' style={{ marginBottom: 24 }}>
             <Bar {...barConfig} />
           </Card>
 
           <Row gutter={[24, 24]}>
             <Col xs={24} md={12}>
-              <Card title="Service Distribution">
+              <Card title='Service Distribution'>
                 <Pie {...pieConfig} />
               </Card>
             </Col>
             <Col xs={24} md={12}>
-              <Card title="Monthly Trend">
+              <Card title='Monthly Trend'>
                 <Line {...lineConfig} />
               </Card>
             </Col>
@@ -225,12 +263,12 @@ const DashboardMain = () => {
         </Col>
       </Row>
     </div>
-  );
-};
+  )
+}
 
 // Component: Stat Card
 const StatCard = ({ icon, title, value, change, isRating = false }) => {
-  const isPositive = change >= 0;
+  const isPositive = change >= 0
 
   return (
     <Card>
@@ -241,12 +279,14 @@ const StatCard = ({ icon, title, value, change, isRating = false }) => {
         suffix={isRating ? '/5' : null}
       />
       {change !== undefined && (
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center',
-          color: isPositive ? '#52c41a' : '#f5222d',
-          marginTop: 8
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            color: isPositive ? '#52c41a' : '#f5222d',
+            marginTop: 8
+          }}
+        >
           {isPositive ? <ArrowUpOutlined /> : <ArrowDownOutlined />}
           <span style={{ marginLeft: 4 }}>
             {Math.abs(change)}% {isPositive ? 'increase' : 'decrease'}
@@ -254,12 +294,12 @@ const StatCard = ({ icon, title, value, change, isRating = false }) => {
         </div>
       )}
     </Card>
-  );
-};
+  )
+}
 
 // Component: Upcoming Camps
 const UpcomingCamps = ({ camps }) => (
-  <Card 
+  <Card
     title={
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <span>Upcoming Camps</span>
@@ -270,37 +310,43 @@ const UpcomingCamps = ({ camps }) => (
   >
     <div style={{ display: 'grid', gap: 16 }}>
       {camps.map(camp => (
-        <div key={camp.id} style={{ borderBottom: '1px solid #f0f0f0', paddingBottom: 16 }}>
+        <div
+          key={camp.id}
+          style={{ borderBottom: '1px solid #f0f0f0', paddingBottom: 16 }}
+        >
           <div style={{ fontWeight: 500 }}>{camp.name}</div>
-          <div style={{ 
-            display: 'flex', 
-            justifyContent: 'space-between',
-            color: '#666',
-            fontSize: 14,
-            margin: '8px 0'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              color: '#666',
+              fontSize: 14,
+              margin: '8px 0'
+            }}
+          >
             <span>{camp.location}</span>
             <span>{new Date(camp.date).toLocaleDateString()}</span>
           </div>
           <div>
-            <Tag color="blue" style={{ marginRight: 8 }}>{camp.type}</Tag>
-            <Tag color="green">{camp.participants} registered</Tag>
+            <Tag color='blue' style={{ marginRight: 8 }}>
+              {camp.type}
+            </Tag>
+            <Tag color='green'>{camp.participants} registered</Tag>
           </div>
         </div>
       ))}
-      <Button type="link" block>View All Camps</Button>
+      <Button type='link' block>
+        View All Camps
+      </Button>
     </div>
   </Card>
-);
+)
 
 // Component: Organizer Tools
 const OrganizerTools = () => (
-  <Card 
-    title="Quick Actions"
-    style={{ marginBottom: 24 }}
-  >
+  <Card title='Quick Actions' style={{ marginBottom: 24 }}>
     <div style={{ display: 'grid', gap: 12 }}>
-      <Button type="primary" icon={<PlusOutlined />} block>
+      <Button type='primary' icon={<PlusOutlined />} block>
         Create New Camp
       </Button>
       <Button icon={<TeamOutlined />} block>
@@ -311,16 +357,16 @@ const OrganizerTools = () => (
       </Button>
     </div>
   </Card>
-);
+)
 
 // Component: Notifications Panel
 const NotificationsPanel = ({ notifications }) => (
-  <Card title="Recent Notifications">
+  <Card title='Recent Notifications'>
     <div style={{ display: 'grid', gap: 12 }}>
       {notifications.map(notification => (
-        <div 
-          key={notification.id} 
-          style={{ 
+        <div
+          key={notification.id}
+          style={{
             padding: 12,
             borderRadius: 8,
             backgroundColor: !notification.read ? '#e6f7ff' : 'transparent'
@@ -332,9 +378,11 @@ const NotificationsPanel = ({ notifications }) => (
           </div>
         </div>
       ))}
-      <Button type="link" block>See All Notifications</Button>
+      <Button type='link' block>
+        See All Notifications
+      </Button>
     </div>
   </Card>
-);
+)
 
-export default DashboardMain;
+export default DashboardOverviwe

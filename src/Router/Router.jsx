@@ -15,12 +15,13 @@ import AnalyticsPage from '../Pages/Dashboard/Participent/AnalyticsPage'
 import ParticipantProfile from '../Pages/Dashboard/Participent/ParticipantProfile'
 import RegisteredCamps from '../Pages/Dashboard/Participent/RegisteredCamps'
 import PaymentHistory from '../Pages/Dashboard/Participent/PaymentHistory'
-import DashbordMain from '../Layout/DashbordMain'
 import SuccessStorySubmission from '../Pages/Dashboard/Participent/SuccessStorySubmission'
 import AboutUsPage from '../Pages/AboutUsPage/AboutUsPage'
 import ContactUsPage from '../Pages/ContactUsPage/ContactUsPage'
 import BlogPage from '../Pages/BlogPage/BlogPage'
 import OrganizerRegistrationPage from '../Pages/OrganizerRegistrationPage/OrganizerRegistrationPage'
+import DashboardOverviwe from '../Layout/DashboardOverviwe'
+
 
 const router = createBrowserRouter([
   {
@@ -74,14 +75,14 @@ const router = createBrowserRouter([
     element: (
       <PrivetRouts>
         <Dashboard></Dashboard>
-      </PrivetRouts>
+      </PrivetRouts> 
     ),
     children: [
       {
         path: '/dashboard',
         element: (
           <PrivetRouts>
-            <DashbordMain></DashbordMain>
+            <DashboardOverviwe></DashboardOverviwe>
           </PrivetRouts>
         )
       },
