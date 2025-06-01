@@ -76,7 +76,7 @@ export default function OrganizerRegistration () {
 
       // Simulate API call
       await axios
-        .post('http://localhost:5000/create-organizer', data)
+        .post('https://b10a12-server-side-developer-jaber.vercel.app/create-organizer', data)
         .then(() => {
           setSubmitSuccess(true)
           reset() // Reset form on success

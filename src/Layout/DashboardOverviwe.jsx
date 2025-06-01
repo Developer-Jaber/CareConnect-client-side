@@ -29,8 +29,6 @@ import { Bar, Pie, Line } from '@ant-design/charts'
 import { AuthContext } from '../Provider/AuthProvider'
 
 
-const { Step } = Steps
-
 const DashboardOverviwe = () => {
   const { user } = useContext(AuthContext)
   const [isOrganizer, setIsOrganizer] = useState(false)

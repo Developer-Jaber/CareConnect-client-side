@@ -70,7 +70,7 @@ const Dashboard = () => {
 
               <nav>
                 <NavLink
-                  to='/dashboard/add-camp'
+                  to='/dashboard'
                   className={({ isActive }) =>
                     `flex items-center gap-3 mt-16 py-2 px-5 rounded-3xl hover:bg-[var(--secondary)] ${
                       isActive ? 'bg-[var(--secondary)]' : ''
