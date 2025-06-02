@@ -74,13 +74,13 @@ const FAQSection = () => {
           <p className="mb-6 text-[var(--text)]">
             Didn't find your answer?
           </p>
-          <Button 
+          <button 
             size="large" 
-            className="bg-[var(--primary)] hover:bg-[var(--accent)] px-8 h-12 font-medium text-[var(--text)]"
-            icon={<MessageOutlined />}
+            className='bg-[#2fbc2f] hover:bg-[#b8c7bf] mt-2 mr-5 border-none text-[#090109] md:text-xl btn btn-primary'
           >
-            Contact Support
-          </Button>
+            <MessageOutlined />
+            <span>Contact Support</span>
+          </button>
         </div>
       </div>
     </div>

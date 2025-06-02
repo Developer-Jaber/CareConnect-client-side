@@ -96,7 +96,7 @@ const PopularCamps = () => {
 
               {/* CTA Button with hover effect */}
               <Link to={`/camp-details/${camp._id}`}>
-                <button className='flex justify-center items-center gap-2 bg-[#2fbc2f] hover:bg-[var(--accent)] mt-4 py-3 rounded-lg w-full font-bold text-[#090109] transition-all duration-300'>
+                <button className='flex justify-center items-center gap-2 bg-[#2fbc2f] hover:bg-[#b8c7bf] mt-4 py-3 rounded-lg w-full font-bold text-[#090109] transition-all duration-300'>
                   View Details
                 </button>
               </Link>

@@ -113,12 +113,13 @@ const ProfessionalsSection = () => {
 
               {/* Footer */}
               <div className='px-6 pb-6'>
-                <Button
+                <button
+                  type='button'
+                  onClick={() => alert(`Booking consultation with ${doc.name}`)}
                   block
-                  className='bg-[var(--primary)] hover:bg-[var(--accent)] h-10 font-medium text-[var(--text)]'
-                >
+                  className='flex justify-center items-center gap-2 bg-[#2fbc2f] hover:bg-[#b8c7bf] mt-4 py-3 rounded-lg w-full font-bold text-[#090109] transition-all duration-300'                >
                   Book Consultation
-                </Button>
+                </button>
               </div>
             </div>
           </Col>
@@ -126,12 +127,13 @@ const ProfessionalsSection = () => {
       </Row>
 
       <div className='mt-16 text-center'>
-        <Button
+        <button
+          type='button'
           size='large'
-          className='bg-[var(--secondary)] hover:bg-[var(--accent)] px-8 h-12 text-[var(--text)]'
+          className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-xl btn btn-primary'
         >
           View All Specialists
-        </Button>
+        </button>
       </div>
     </div>
   )
