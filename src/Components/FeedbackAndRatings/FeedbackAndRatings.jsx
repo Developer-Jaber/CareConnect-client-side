@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card, Rate, Avatar, List, Tag, Divider } from 'antd';
 import { MessageOutlined, UserOutlined } from '@ant-design/icons';
+import SectionTitle from '../../Shared/SectionTitle';
 
 const FeedbackAndRatings = () => {
   const [feedbackData, setFeedbackData] = useState([]);
@@ -13,16 +14,16 @@ const FeedbackAndRatings = () => {
 
   return (
     <div className="mx-auto mt-4 md:mt-20 p-4 md:p-8 max-w-6xl">
-      <h1 className="mb-20 font-bold text-[var(--text)] text-3xl md:text-4xl text-center">
-        Participant Experiences
-      </h1>
+      <SectionTitle
+      headline="Participant Experiences"
+      ></SectionTitle>
       
       <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {feedbackData.map((item) => (
            <Card
-            key={item.id}
+            key={item._id}
             className="shadow-lg hover:shadow-xl border-0 transition-all duration-300"
-            bodyStyle={{ padding: '16px' }}
+            style={{ padding: '16px' }}
           >
             <div className="flex items-start gap-4 mb-3">
               <Avatar 

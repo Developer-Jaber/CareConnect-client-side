@@ -1,5 +1,6 @@
 import { Collapse, Tag, Divider, Button } from 'antd';
 import { QuestionCircleOutlined, MessageOutlined } from '@ant-design/icons';
+import SectionTitle from '../../Shared/SectionTitle';
 
 const { Panel } = Collapse;
 
@@ -34,14 +35,11 @@ const FAQSection = () => {
 
   return (
     <div className="bg-[var(--background)] p-8 md:p-12 lg:p-16">
-      <div className="mb-12 text-center">
-        <h2 className="mb-3 font-bold text-[var(--text)] text-3xl md:text-5xl">
-          Frequently Asked Questions
-        </h2>
-        <p className="opacity-80 mx-auto max-w-2xl text-[var(--text)] text-lg">
-          Quick answers to common questions about our medical camps
-        </p>
-      </div>
+     {/*Section title */}
+      <SectionTitle
+        headline="Frequently Asked Questions"
+        description="Quick answers to common questions about our medical camps"
+      ></SectionTitle>
 
       <div className="mx-auto max-w-4xl">
         <Collapse 

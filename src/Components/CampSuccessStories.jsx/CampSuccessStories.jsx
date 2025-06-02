@@ -2,6 +2,7 @@ import { Card, Rate, Divider, message } from 'antd'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import SectionTitle from '../../Shared/SectionTitle'
 
 const CampSuccessStories = () => {
   const [successStories, setSuccessStories] = useState([])
@@ -14,19 +15,17 @@ const CampSuccessStories = () => {
 
   return (
     <div className='py-20 smin-h-screen'>
-      <div className='my-10 text-center'>
-        <h1 className='font-bold text-[var(--text)] text-3xl md:text-4xl lg:text-5xl'>
-          Camp Success Stories
-        </h1>
-        <p className='mt-4 text-[var(--text)] text-lg md:text-xl'>
-          Hear inspiring stories and real experiences from participants who made
-          a difference through our medical camps.
-        </p>
-      </div>
+      
+      <SectionTitle
+      headline="Camp Success Stories"
+      description="Hear inspiring stories and real experiences from participants who made a difference through our medical camps."
+      ></SectionTitle>
+
+
       <div className='gap-8 grid grid-cols-1 lg:grid-cols-3 mx-auto w-10/12'>
         {successStories.map(story => (
           <motion.div
-            key={story.id}
+            key={story._id}
             className='flex justify-center'
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}

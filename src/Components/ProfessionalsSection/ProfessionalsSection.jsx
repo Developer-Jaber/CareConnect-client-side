@@ -6,6 +6,7 @@ import {
   CalendarOutlined,
   MessageOutlined
 } from '@ant-design/icons'
+import SectionTitle from '../../Shared/SectionTitle'
 
 const ProfessionalsSection = () => {
   const professionals = [
@@ -42,14 +43,11 @@ const ProfessionalsSection = () => {
 
   return (
     <div className='bg-[var(--background)] p-6 md:p-12'>
-      <div className='mb-12 text-center'>
-        <h2 className='mb-3 font-bold text-[var(--text)] text-3xl md:text-5xl'>
-          Dedicated Healthcare Specialists
-        </h2>
-        <p className='opacity-80 mx-auto max-w-2xl text-[var(--text)] text-lg'>
-          Meet our board-certified professionals committed to community health
-        </p>
-      </div>
+      
+    <SectionTitle
+    headline="Meet Our Specialists"
+    description="Connect with our experienced medical professionals who lead our camps and provide expert care."
+    ></SectionTitle>
 
       <Row gutter={[24, 24]} justify='center'>
         {professionals.map(doc => (
