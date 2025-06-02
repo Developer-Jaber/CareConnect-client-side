@@ -42,9 +42,11 @@ const Navber = () => {
       <li>
         <Link to='/blogs'>Blogs</Link>
       </li>
-      <li className='md:hidden bg-[#2fbc2f] hover:bg-[#72f4aa] rounded-md font-semibold text-gray-200 hover:text-white text-start'>
-        <Link to='/join-us'>Join Us</Link>
-      </li>
+      {user && user?.email ? null : (
+        <li className='md:hidden bg-[#2fbc2f] hover:bg-[#72f4aa] rounded-md font-semibold text-gray-200 hover:text-white text-start'>
+          <Link to='/join-us'>Join Us</Link>
+        </li>
+      )}
     </>
   )
 
@@ -67,7 +69,11 @@ const Navber = () => {
     >
       <div className='navbar-start'>
         <div className='dropdown'>
-          <div tabIndex={0} role='button' className='lg:hidden p-2 btn btn-ghost'>
+          <div
+            tabIndex={0}
+            role='button'
+            className='lg:hidden p-2 btn btn-ghost'
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='w-5 h-5'
@@ -120,20 +126,18 @@ const Navber = () => {
               tabIndex={0}
               className='z-[1] bg-base-100 shadow mt-3 p-2 rounded-box w-52 dropdown-content menu menu-sm'
             >
-              <li className='bg-slate-300 p-3 overflow-hidden'>
-                {user?.email}
+              <li>
+                <Link 
+                  to='/dashboard'
+                  className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-lg btn'
+                  >Dashboard
+                </Link>
               </li>
               <li>
-                <a className='justify-between'>
-                  Profile
-                  <span className='badge'>New</span>
-                </a>
-              </li>
-              <li>
-                <Link to='/dashboard'>Dashboard</Link>
-              </li>
-              <li>
-                <Button onClick={handleLogOut}>Logout</Button>
+                <button 
+                 className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] btn'
+                 onClick={handleLogOut}
+                 >Logout</button>
               </li>
             </ul>
           </div>
