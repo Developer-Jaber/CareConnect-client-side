@@ -3,6 +3,7 @@ import { Card, Button, Row, Col, Input, Select, Tag, Rate, Spin, Empty } from 'a
 import { SearchOutlined, StarFilled, EnvironmentOutlined, CalendarOutlined, UserOutlined, TeamOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import './AvailableCampsPage.css';
+import SectionTitle from '../../Shared/SectionTitle';
 
 const { Meta } = Card;
 const { Option } = Select;
@@ -90,10 +91,14 @@ const AvailableCampsPage = () => {
   return (
     <div className="available-camps-page">
       {/* Page Header */}
-      <div className="my-20 page-header">
+      {/* <div className="my-20 page-header">
         <h1 className="page-title">Available Medical Camps</h1>
         <p className="text-[1rem] md:text-xl">Find and join health camps in your area</p>
-      </div>
+      </div> */}
+      <SectionTitle
+      headline="Available Medical Camps"
+      description="Find and join health camps in your area. Explore various medical services, locations, and specialists to enhance your health awareness."
+      ></SectionTitle>
 
       {/* Search and Filter Section */}
       <div className="search-filter-section mt-20">
