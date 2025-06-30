@@ -60,8 +60,9 @@ const FAQSection = () => {
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
+  //const [apiKey] = useState(process.env.REACT_APP_OPENROUTER_API_KEY)
   const [apiKey] = useState(
-    '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'
+    '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'
   )
 
   
@@ -88,65 +89,141 @@ const FAQSection = () => {
     setMessages([])
   }
 
+  // const handleSend = async () => {
+  //   if (!input.trim()) return
+
+  //   // Add user message to chat
+  //   const userMessage = { role: 'user', content: input }
+  //   setMessages(prev => [...prev, userMessage])
+  //   setInput('')
+  //   setLoading(true)
+
+  //   try {
+  //     const response = await fetch(
+  //       'https://openrouter.ai/api/v1/chat/completions',
+  //       {
+  //         method: 'POST',
+  //         headers: {
+  //           'Authorization': `Bearer ${apiKey}`,
+  //           'HTTP-Referer': window.location.href,
+  //           'X-Title': 'Medical Camp System',
+  //           'Content-Type': 'application/json'
+  //         },
+  //         body: JSON.stringify({
+  //           'model': 'deepseek/deepseek-r1:free',
+  //           'messages': [
+  //             {
+  //               'role': 'system',
+  //               'content':
+  //                 'You are a medical camp assistant. Provide accurate information about camp participation, organization, and healthcare services. Keep responses concise and helpful.'
+  //             },
+  //             ...messages.map(msg => ({
+  //               role: msg.role === 'user' ? 'user' : 'assistant',
+  //               content: msg.content
+  //             })),
+  //             {
+  //               'role': 'user',
+  //               'content': input
+  //             }
+  //           ]
+  //         })
+  //       }
+  //     );
+
+  //     if (!response.ok) {
+  //     throw new Error(`API request failed with status ${response.status}`);
+  //   }
+
+  //     const data = await response.json()
+  //     // Improved response handling
+  //   if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+  //     throw new Error('Invalid API response structure');
+  //   }
+
+  //     const aiMessage = { 
+  //     role: 'ai', 
+  //     content: data.choices[0].message.content 
+  //   };
+  //     setMessages(prev => [...prev, aiMessage])
+  //   } catch (error) {
+  //     console.error('AI Error:', error)
+  //     setMessages(prev => [
+  //       ...prev,
+  //       {
+  //         role: 'ai',
+  //         content: `Sorry, I encountered an error: ${error.message}. Please try again later.`
+  //       }
+  //     ]);
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // };
+
   const handleSend = async () => {
-    if (!input.trim()) return
+  if (!input.trim()) return
 
-    // Add user message to chat
-    const userMessage = { role: 'user', content: input }
-    setMessages(prev => [...prev, userMessage])
-    setInput('')
-    setLoading(true)
+  // Add user message to chat
+  const userMessage = { role: 'user', content: input }
+  const updatedMessages = [...messages, userMessage] // Create new array with new message
+  setMessages(updatedMessages)
+  setInput('')
+  setLoading(true)
 
-    try {
-      const response = await fetch(
-        'https://openrouter.ai/api/v1/chat/completions',
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            'HTTP-Referer': window.location.href,
-            'X-Title': 'Medical Camp System',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            model: 'deepseek/deepseek-r1:free',
-            messages: [
-              {
-                role: 'system',
-                content:
-                  'You are a medical camp assistant. Provide accurate information about camp participation, organization, and healthcare services. Keep responses concise and helpful.'
-              },
-              ...messages.map(msg => ({
-                role: msg.role === 'user' ? 'user' : 'assistant',
-                content: msg.content
-              })),
-              {
-                role: 'user',
-                content: input
-              }
-            ]
-          })
-        }
-      )
+  try {
+    const response = await fetch(
+      'https://openrouter.ai/api/v1/chat/completions',
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'HTTP-Referer': window.location.href,
+          'X-Title': 'Medical Camp System',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          'model': 'deepseek/deepseek-r1:free',
+          'messages': [
+            {
+              'role': 'system',
+              'content':
+                'You are a medical camp assistant. Provide accurate information about camp participation, organization, and healthcare services. Keep responses concise and helpful.'
+            },
+            ...updatedMessages.map(msg => ({
+              role: msg.role === 'user' ? 'user' : 'assistant',
+              content: msg.content
+            }))
+          ]
+        })
+      }
+    );
 
-      const data = await response.json()
-      const aiMessage = { role: 'ai', content: data.choices[0].message.content }
-      setMessages(prev => [...prev, aiMessage])
-    } catch (error) {
-      console.error('AI Error:', error)
-      setMessages(prev => [
-        ...prev,
-        {
-          role: 'ai',
-          content:
-            "Sorry, I'm having trouble connecting. Please try again later."
-        }
-      ])
-    } finally {
-      setLoading(false)
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}`);
     }
-  }
 
+    const data = await response.json()
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      throw new Error('Invalid API response structure');
+    }
+
+    const aiMessage = { 
+      role: 'ai', 
+      content: data.choices[0].message.content 
+    };
+    setMessages(prev => [...prev, aiMessage])
+  } catch (error) {
+    console.error('AI Error:', error)
+    setMessages(prev => [
+      ...prev,
+      {
+        role: 'ai',
+        content: `Sorry, I encountered an error: ${error.message}. Please try again later.`
+      }
+    ]);
+  } finally {
+    setLoading(false)
+  }
+};
   return (
     <div className='bg-[var(--background)] p-8 md:p-12 lg:p-16'>
       {/*Section title */}
