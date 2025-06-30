@@ -7,7 +7,7 @@ const SectionTitle = ({headline, description}) => {
           </h2>
           <p className='mt-4 text-lg md:text-xl'>
             {description}
-          </p>
+          </p>    
         </div>
     );
 };
