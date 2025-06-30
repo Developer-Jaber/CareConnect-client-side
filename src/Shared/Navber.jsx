@@ -129,13 +129,13 @@ const Navber = () => {
               <li>
                 <Link 
                   to='/dashboard'
-                  className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] md:text-lg btn'
+                  className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-2 border-none min-h-[2.7rem] text-[#090109] md:text-lg btn'
                   >Dashboard
                 </Link>
               </li>
               <li>
                 <button 
-                 className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-6 border-none text-[#090109] btn'
+                 className='bg-[var(--secondary)] hover:bg-[#b8c7bf] mt-2 border-none min-h-[2.7rem] text-[#090109] md:text-lg btn'
                  onClick={handleLogOut}
                  >Logout</button>
               </li>
