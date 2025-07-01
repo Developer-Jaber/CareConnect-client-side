@@ -62,7 +62,7 @@ const FAQSection = () => {
   const [loading, setLoading] = useState(false)
   //const [apiKey] = useState(process.env.REACT_APP_OPENROUTER_API_KEY)
   const [apiKey] = useState(
-    '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'
+    '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'
   )
 
   
@@ -266,7 +266,7 @@ const FAQSection = () => {
               className='bg-white shadow-sm hover:shadow-md mb-4 border-0 rounded-lg transition-all'
             >
               <Divider className='bg-[var(--secondary)] my-3' />
-              <p className='text-gray-700'>{faq.answer}</p>
+              <p className='text-gray-700 text-lg'>{faq.answer}</p>
             </Panel>
           ))}
         </Collapse>
